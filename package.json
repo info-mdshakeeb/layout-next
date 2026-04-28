@@ -1,6 +1,6 @@
 {
   "name": "layout-next",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "private": true,
   "scripts": {
@@ -9,7 +9,10 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "version-packages": "changeset version"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.13.11",

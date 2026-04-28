@@ -49,6 +49,30 @@ pnpm lint
 pnpm typecheck
 ```
 
+## Versioning
+
+This project uses Changesets to decide when `package.json` should get a new version and what should go into `CHANGELOG.md`.
+
+For each meaningful change, create a changeset:
+
+```bash
+pnpm changeset
+```
+
+Choose the version bump:
+
+- `patch`: bug fixes and tiny changes, for example `0.0.1` to `0.0.2`
+- `minor`: new features that do not break existing usage, for example `0.0.1` to `0.1.0`
+- `major`: breaking changes, for example `0.1.0` to `1.0.0`
+
+When you are ready to release/version the project, run:
+
+```bash
+pnpm version-packages
+```
+
+That command consumes the files in `.changeset`, updates the package version, and writes `CHANGELOG.md`. Commit those generated changes.
+
 ## GitHub
 
 Repository:
