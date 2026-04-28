@@ -1,15 +1,8 @@
-import { Geist_Mono, Inter } from "next/font/google"
-
 import { cn } from "@/lib/utils"
-import { ThemeProvider } from "@/providers/theme-provider"
+import Provider from "@/providers"
+
+import { fontVariables } from "@/lib/fonts"
 import "@/styles/globals.css"
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
 
 export default function RootLayout({
   children,
@@ -20,15 +13,10 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        inter.variable
-      )}
+      className={cn("antialiased", "font-sans", fontVariables)}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   )
