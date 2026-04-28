@@ -10,6 +10,7 @@ A Next.js layout starter built with the App Router, Tailwind CSS, shadcn/ui, and
 - Tailwind CSS 4
 - shadcn/ui
 - next-themes
+- @t3-oss/env-nextjs
 
 ## Layout Structure
 
@@ -17,6 +18,7 @@ A Next.js layout starter built with the App Router, Tailwind CSS, shadcn/ui, and
 - `app/page.tsx` contains the starter page for adding layout content and UI components.
 - `styles/globals.css` contains the global Tailwind and design token styles.
 - `components/ui/button.tsx` provides the shadcn/ui button component.
+- `env.ts` validates environment variables with `@t3-oss/env-nextjs`.
 - `providers/theme-provider.tsx` wraps the app with dark mode support.
 - `lib/utils.ts` contains shared utility helpers.
 
