@@ -8,11 +8,11 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    Site_URL: z.url(),
+    SITE_URL: z.url(),
   },
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    Site_URL: process.env.Site_URL,
+    SITE_URL: process.env.SITE_URL,
   },
 
   skipValidation: process.env.SKIP_ENV_VALIDATION === "true",
