@@ -1,21 +1,56 @@
-# Next.js template
+# Layout Next
 
-This is a Next.js template with shadcn/ui.
+A Next.js layout starter built with the App Router, Tailwind CSS, shadcn/ui, and theme support.
 
-## Adding components
+## Stack
 
-To add components to your app, run the following command:
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- shadcn/ui
+- next-themes
+
+## Layout Structure
+
+- `app/layout.tsx` defines the root HTML layout, Google fonts, global styles, and theme provider.
+- `app/page.tsx` contains the starter page for adding layout content and UI components.
+- `styles/globals.css` contains the global Tailwind and design token styles.
+- `components/ui/button.tsx` provides the shadcn/ui button component.
+- `providers/theme-provider.tsx` wraps the app with dark mode support.
+- `lib/utils.ts` contains shared utility helpers.
+
+## Getting Started
+
+Install dependencies:
 
 ```bash
-npx shadcn@latest add button
+pnpm install
 ```
 
-This will place the ui components in the `components` directory.
+Run the development server:
 
-## Using components
+```bash
+pnpm dev
+```
 
-To use the components in your app, import them as follows:
+Build for production:
 
-```tsx
-import { Button } from "@/components/ui/button";
+```bash
+pnpm build
+```
+
+Run checks:
+
+```bash
+pnpm lint
+pnpm typecheck
+```
+
+## GitHub
+
+Repository:
+
+```bash
+https://github.com/info-mdshakeeb/layout-next.git
 ```
