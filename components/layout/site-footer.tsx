@@ -16,13 +16,6 @@ import Link from "next/link"
 import type { ReactNode } from "react"
 import { Logo } from "./logo"
 
-const airplanes = [
-  { delay: 0, duration: 26, y: "12%", scale: 0.65, opacity: 0.12 },
-  { delay: 8, duration: 30, y: "34%", scale: 0.55, opacity: 0.1 },
-  { delay: 14, duration: 34, y: "56%", scale: 0.48, opacity: 0.09 },
-  { delay: 20, duration: 38, y: "76%", scale: 0.42, opacity: 0.08 },
-]
-
 const socialLinks = [
   {
     key: "twitter",
@@ -69,7 +62,7 @@ const footerSections = [
   {
     title: "Policies",
     links: [
-      { label: "Privacy Policy", href: "#privacy" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "#terms" },
       { label: "Cookie Policy", href: "#cookies" },
       { label: "Refund Policy", href: "#refund" },
@@ -93,7 +86,7 @@ const paymentMethods = [
 ]
 
 const footerBottomLinks = [
-  { label: "Privacy", href: "#privacy" },
+  { label: "Privacy", href: "/privacy-policy" },
   { label: "Terms", href: "#terms" },
   { label: "Cookies", href: "#cookies" },
 ]
