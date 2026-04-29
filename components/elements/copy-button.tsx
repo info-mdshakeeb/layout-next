@@ -3,62 +3,101 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-
+import { CheckIcon, CopyIcon } from "lucide-react"
 import { Button } from "../ui/button"
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
 
-export function copyToClipboardWithMeta(value: string) {
-  navigator.clipboard.writeText(value)
+function legacyCopyToClipboard(value: string) {
+  const textArea = document.createElement("textarea")
+  textArea.value = value
+  textArea.setAttribute("readonly", "")
+  textArea.style.position = "fixed"
+  textArea.style.opacity = "0"
+  textArea.style.pointerEvents = "none"
+
+  document.body.appendChild(textArea)
+  textArea.focus()
+  textArea.select()
+  textArea.setSelectionRange(0, value.length)
+
+  let hasCopied = false
+  try {
+    hasCopied = document.execCommand("copy")
+  } catch {
+    hasCopied = false
+  }
+
+  document.body.removeChild(textArea)
+  return hasCopied
+}
+
+export async function copyToClipboardWithMeta(value: string) {
+  if (typeof window === "undefined") {
+    return false
+  }
+
+  if (!value) {
+    return false
+  }
+
+  let hasCopied = false
+
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(value)
+      hasCopied = true
+    } catch {
+      hasCopied = legacyCopyToClipboard(value)
+    }
+  } else {
+    hasCopied = legacyCopyToClipboard(value)
+  }
+
+  if (!hasCopied) {
+    return false
+  }
+  return true
 }
 
 export function CopyButton({
   value,
   className,
   variant = "ghost",
-
-  tooltip = "Copy to Clipboard",
   ...props
 }: React.ComponentProps<typeof Button> & {
   value: string
   src?: string
-
   tooltip?: string
 }) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
-    if (!hasCopied) return
-
-    const t = window.setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-
-    return () => window.clearTimeout(t)
+    if (hasCopied) {
+      const timer = setTimeout(() => setHasCopied(false), 2000)
+      return () => clearTimeout(timer)
+    }
   }, [hasCopied])
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          data-slot="copy-button"
-          data-copied={hasCopied}
-          size="icon"
-          variant={variant}
-          className={cn(
-            "bg-code absolute top-3 right-2 z-10 size-7 hover:opacity-100 focus-visible:opacity-100",
-            className
-          )}
-          onClick={() => {
-            copyToClipboardWithMeta(value)
-            setHasCopied(true)
-          }}
-          {...props}
-        >
-          <span className="sr-only">Copy</span>
-          {hasCopied ? <IconCheck /> : <IconCopy />}
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent>{hasCopied ? "Copied" : tooltip}</TooltipContent>
-    </Tooltip>
+    <Button
+      data-slot="copy-button"
+      data-copied={hasCopied}
+      size="icon"
+      variant={variant}
+      className={cn(
+        "bg-code absolute top-3 right-2 z-10 size-7 hover:opacity-100 focus-visible:opacity-100",
+        className
+      )}
+      onClick={async () => {
+        const hasCopied = await copyToClipboardWithMeta(value)
+
+        if (hasCopied) {
+          setHasCopied(true)
+        }
+      }}
+      {...props}
+    >
+      <span className="sr-only">Copy</span>
+      {hasCopied ? <CheckIcon /> : <CopyIcon />}
+    </Button>
   )
 }
