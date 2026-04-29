@@ -14,17 +14,16 @@ export default function DocsLayout({
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <div className={cn("w-full bg-sidebar", "p-0")}>
+      <div className="w-full">
         <DecorativeBorder />
         <div
           className={cn(
-            "h-full bg-background sm:border"
-            // "sm:rounded-tl-md sm:rounded-br-xl sm:rounded-bl-md"
+            "h-[calc(100vh)] overflow-hidden bg-background sm:border"
           )}
         >
           <SidebarInset>
             <DashboardHeader />
-            {children}
+            <div className="">{children}</div>
           </SidebarInset>
         </div>
       </div>

@@ -1,7 +1,7 @@
 const DecorativeBorder = () => {
   return (
     <svg
-      className="pointer-events-none absolute top-0 right-0 z-10 h-11 w-77.5 overflow-visible sm:top-0 sm:right-[.5px]"
+      className="pointer-events-none absolute top-0 right-0 z-10 h-12 w-87.5 overflow-visible sm:top-0 sm:right-0"
       viewBox="0 0 400 44"
       preserveAspectRatio="none"
       fill="none"
