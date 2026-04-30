@@ -1,0 +1,38 @@
+/* Default: disable animation */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Only apply animation when html has .theme-animating */
+html.theme-animating::view-transition-old(root) {
+  z-index: 0;
+}
+
+html.theme-animating::view-transition-new(root) {
+  z-index: 1;
+  animation: reveal 0.3s ease-in-out forwards;
+}
+
+/* Page transition — same reveal, triggered by .page-animating */
+html.page-animating::view-transition-old(root) {
+  z-index: 0;
+}
+
+html.page-animating::view-transition-new(root) {
+  z-index: 1;
+  animation: reveal 0.65s ease-in-out forwards;
+}
+
+/* Circular reveal animation (shared) */
+@keyframes reveal {
+  from {
+    clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
+    opacity: 0.4;
+  }
+  to {
+    clip-path: circle(150% at var(--x, 50%) var(--y, 50%));
+    opacity: 1;
+  }
+}

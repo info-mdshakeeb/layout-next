@@ -1,33 +1,29 @@
-"use client";
+"use client"
 
-import { Moon, Sun } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { useSyncExternalStore } from "react";
+import { Moon, Sun } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
+import { useSyncExternalStore } from "react"
 
-import { Button } from "@/components/ui/button";
-import { useMetaColor } from "@/hooks/use-meta-color";
-import { useSmoothTheme } from "@/hooks/use-smooth-theme";
+import { Button } from "@/components/ui/button"
+import { useMetaColor } from "@/hooks/use-meta-color"
+import { useTheme } from "next-themes"
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => {}
 
 export function ModeSwitcher() {
-  const { toggleTheme: smoothToggleTheme, theme } = useSmoothTheme();
-  const { setMetaColor, metaColor } = useMetaColor();
+  const { setTheme, theme } = useTheme()
+  const { setMetaColor, metaColor } = useMetaColor()
 
-  // Returns true on client, false during SSR to prevent hydration mismatch
   const mounted = useSyncExternalStore(
     emptySubscribe,
     () => true,
     () => false
-  );
+  )
 
-  const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
-    smoothToggleTheme({
-      x: event.clientX,
-      y: event.clientY,
-    });
-    setMetaColor(metaColor);
-  };
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
+    setMetaColor(metaColor)
+  }
 
   if (!mounted) {
     return (
@@ -38,14 +34,14 @@ export function ModeSwitcher() {
       >
         <span className="h-4 w-4" />
       </Button>
-    );
+    )
   }
 
   return (
     <Button
       size={"icon-sm"}
       variant="outline"
-      className="group/toggle cursor-pointer "
+      className="group/toggle cursor-pointer"
       onClick={toggleTheme}
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -74,5 +70,5 @@ export function ModeSwitcher() {
         )}
       </AnimatePresence>
     </Button>
-  );
+  )
 }

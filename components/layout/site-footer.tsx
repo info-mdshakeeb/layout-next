@@ -1,4 +1,5 @@
 import LinkLoadingIndicator from "@/components/link-loading-indicator"
+import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
 import {
   Code2Icon,
@@ -12,7 +13,6 @@ import {
   SendIcon,
   ShieldCheckIcon,
 } from "lucide-react"
-import Link from "next/link"
 import type { ReactNode } from "react"
 import { Logo } from "./logo"
 
@@ -145,11 +145,11 @@ export function SiteFooter() {
 
           <div className="grid grid-cols-1 gap-10 py-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[2.4fr_1fr_1fr_1fr_1fr]">
             <FooterSection title={siteConfig.name}>
-              <Link href="/" className="mb-4 flex items-center gap-3">
+              <TransitionLink href="/" className="mb-4 flex items-center gap-3">
                 <span className="">
                   <Logo className="size-18" />
                 </span>
-              </Link>
+              </TransitionLink>
               <p className="text-sm leading-6 text-muted-foreground">
                 {siteConfig.description}
               </p>
@@ -211,13 +211,13 @@ export function SiteFooter() {
               </p>
               <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
                 {footerBottomLinks.map((link) => (
-                  <Link
+                  <TransitionLink
                     key={link.href}
                     href={link.href}
                     className="transition-colors hover:text-foreground"
                   >
                     <LinkLoadingIndicator title={link.label} />
-                  </Link>
+                  </TransitionLink>
                 ))}
               </div>
             </div>
@@ -253,12 +253,12 @@ function FooterLinkList({
       <ul className="space-y-2.5">
         {links.map((link) => (
           <li key={link.href}>
-            <Link
+            <TransitionLink
               href={link.href}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <LinkLoadingIndicator title={link.label} />
-            </Link>
+              {link.label}
+            </TransitionLink>
           </li>
         ))}
       </ul>

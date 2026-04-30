@@ -3,6 +3,7 @@ import { ArrowRightIcon, MenuIcon } from "lucide-react"
 import Link from "next/link"
 import { Button } from "../ui/button"
 import { Logo } from "./logo"
+import { ModeSwitcher } from "./mood-switcher"
 
 export function SiteHeader() {
   return (
@@ -38,14 +39,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex items-center gap-2">
-            <Button
-              asChild
-              variant="ghost"
-              size="sm"
-              className="hidden h-9 px-3 sm:flex"
-            >
-              <Link href="#signin">Sign in</Link>
-            </Button>
+            <ModeSwitcher />
             <Button asChild size="sm" className="h-9 px-3 shadow-sm">
               <Link href="#templates">
                 Get started
