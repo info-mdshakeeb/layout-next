@@ -11,17 +11,14 @@ export function SiteHeader() {
         <div className="group-has-data-[slot=designer]/layout:fixed:max-w-none container flex h-(--header-height) items-center gap-3 **:data-[slot=separator]:h-5!">
           <Link
             href="/"
-            className="group flex min-w-0 items-center gap-3 rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="group flex min-w-0 items-center gap-1 rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <span className="">
               <Logo className="size-6" />
             </span>
             <span className="flex min-w-0 flex-col leading-none">
-              <span className="truncate text-sm font-semibold">
-                {siteConfig.name}
-              </span>
-              <span className="hidden text-[11px] text-muted-foreground sm:block">
-                Interface system
+              <span className="truncate text-lg font-semibold">
+                {siteConfig.name.slice(1)}
               </span>
             </span>
           </Link>
@@ -41,11 +38,6 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex items-center gap-2">
-            <div className="hidden items-center gap-2 rounded-full border bg-muted/50 px-3 py-1.5 text-xs text-muted-foreground xl:flex">
-              <span className="size-2 rounded-full bg-emerald-500" />
-              <span>Template ready</span>
-            </div>
-
             <Button
               asChild
               variant="ghost"

@@ -1,3 +1,5 @@
+import { PageHeader } from "@/components/layout/page-header"
+import { OnThisPage } from "@/components/elements/on-this-page"
 import { siteConfig } from "@/lib/config"
 import {
   ArrowUpRightIcon,
@@ -6,14 +8,12 @@ import {
   CookieIcon,
   DatabaseIcon,
   Globe2Icon,
-  MailIcon,
   MapPinIcon,
-  PhoneIcon,
+  ShieldCheckIcon,
   UserCheckIcon,
 } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { PrivacyOnThisPage } from "./privacy-on-this-page"
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${siteConfig.name}`,
@@ -148,95 +148,73 @@ const onThisPageItems = policySections.map((section) => ({
 export default function PrivacyPolicyPage() {
   return (
     <div className="bg-background">
-      {/* Hero — map background with title overlay */}
-      <div
-        className="bg-cover bg-fixed bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/assets/images/b2bhomeMap.png')",
-        }}
-      >
-        <div className="border-b border-border/60">
-          <div className="container-wrapper">
-            <div className="container flex h-32 items-end justify-start lg:h-40">
-              <h1 className="relative bg-primary/20 px-3 py-1 text-xl font-semibold text-primary backdrop-blur-sm sm:text-2xl lg:text-4xl">
-                Privacy Policy
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* ─── Hero ────────────────────────────────────────────────────────── */}
+      <PageHeader label="Legal document" title="Privacy Policy" />
 
-      {/* Info bar — description, meta, summary, and CTAs */}
-      <section className="border-b border-border/60 bg-background">
-        <div className="container py-8 lg:py-10">
-          <div className="grid items-start gap-8 lg:grid-cols-[1fr_auto]">
-            {/* Left — description + meta */}
-            <div>
-              <p className="max-w-2xl text-base leading-7 text-muted-foreground">
-                This policy explains what personal information we collect, how
-                we use it, who we share it with, and the choices available to
-                people who use our website, templates, dashboard layouts, and
-                support services.
-              </p>
-
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+      {/* ─── Meta bar ────────────────────────────────────────────────────── */}
+      <div className="border-b border-border/60 bg-muted/40">
+        <div className="container-wrapper">
+          <div className="container">
+            <div className="flex flex-wrap items-center justify-between gap-4 py-3">
+              {/* Meta chips */}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5">
-                  <CalendarDaysIcon className="size-3.5" />
+                  <CalendarDaysIcon className="size-3.5 text-primary/70" />
                   Updated {lastUpdated}
                 </span>
-                <span
-                  aria-hidden="true"
-                  className="hidden text-border sm:inline"
-                >
-                  ·
-                </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <MapPinIcon className="size-3.5" />
+                  <MapPinIcon className="size-3.5 text-primary/70" />
                   {siteConfig.address}
                 </span>
-                <span
-                  aria-hidden="true"
-                  className="hidden text-border sm:inline"
-                >
-                  ·
-                </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <Globe2Icon className="size-3.5" />
+                  <Globe2Icon className="size-3.5 text-primary/70" />
                   {siteConfig.url}
                 </span>
               </div>
-
               {/* CTAs */}
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="flex items-center gap-2">
                 <a
                   href={`mailto:${siteConfig.emails[0]}`}
-                  className="inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                  className="inline-flex h-7 items-center gap-1.5 border-b border-primary/50 pb-0.5 text-xs font-medium text-primary transition-colors hover:border-primary hover:text-primary/90 focus-visible:outline-none"
                 >
                   Contact privacy team
-                  <ArrowUpRightIcon className="size-3.5" />
+                  <ArrowUpRightIcon className="size-3" />
                 </a>
+                <span className="text-border">·</span>
                 <Link
                   href="/"
-                  className="inline-flex h-9 items-center rounded-lg border border-border/60 px-4 text-sm font-medium transition-colors hover:bg-accent focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                  className="inline-flex h-7 items-center text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none"
                 >
                   Back to home
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            {/* Right — summary highlights */}
-            <div className="flex flex-col gap-4 lg:min-w-[280px]">
-              {summaryItems.map((item) => {
+      {/* ─── At-a-glance strip ───────────────────────────────────────────── */}
+      <div className="border-b border-border/60">
+        <div className="container-wrapper">
+          <div className="container">
+            <div className="grid grid-cols-1 divide-y divide-border/60 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              {summaryItems.map((item, i) => {
                 const Icon = item.icon
-
                 return (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-muted/60 text-foreground">
-                      <Icon className="size-4" />
-                    </div>
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 py-6 sm:px-8 first:sm:pl-0 last:sm:pr-0"
+                  >
+                    {/* Step number */}
+                    <span className="mt-0.5 shrink-0 font-mono text-2xl leading-none font-bold text-border">
+                      0{i + 1}
+                    </span>
                     <div>
-                      <h2 className="text-sm font-semibold">{item.title}</h2>
-                      <p className="mt-0.5 text-sm leading-5 text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <Icon className="size-3.5 text-primary" />
+                        <p className="text-sm font-semibold">{item.title}</p>
+                      </div>
+                      <p className="mt-1 text-sm leading-5 text-muted-foreground">
                         {item.value}
                       </p>
                     </div>
@@ -246,113 +224,120 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Main content: article left, "On This Page" right */}
-      <div className="container grid gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_260px] lg:py-16">
-        <article className="min-w-0">
-          {/* Policy sections — clean document flow with dividers */}
-          <div className="divide-y divide-border/60">
-            {policySections.map((section) => (
-              <section
-                key={section.id}
-                id={section.id}
-                className="scroll-mt-24 py-10 first:pt-0"
-              >
-                <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-                  {section.title}
-                </h2>
-                <div className="mt-4 space-y-4 text-base leading-8 text-muted-foreground">
-                  {section.body.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-
-          {/* Data categories table */}
-          <section className="border-t border-border/60 pt-10">
-            <div className="flex items-center gap-3">
-              <CookieIcon className="size-5 text-muted-foreground" />
-              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-                Data Categories We Handle
-              </h2>
-            </div>
-            <div className="mt-6 overflow-hidden rounded-lg border border-border/60">
-              <table className="w-full text-left text-sm">
-                <thead className="bg-muted/40 text-foreground">
-                  <tr>
-                    <th className="px-4 py-3 font-semibold">Category</th>
-                    <th className="px-4 py-3 font-semibold">Examples</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/60">
-                  {dataCategories.map(([category, examples]) => (
-                    <tr
-                      key={category}
-                      className="transition-colors hover:bg-muted/30"
-                    >
-                      <td className="px-4 py-4 font-medium">{category}</td>
-                      <td className="px-4 py-4 text-muted-foreground">
-                        {examples}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          {/* Contact section */}
-          <section className="mt-10 border-t border-border/60 pt-10">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-              Contact Us
-            </h2>
-            <p className="mt-3 max-w-3xl text-base leading-8 text-muted-foreground">
-              For privacy questions, requests, or complaints, contact Synth-Co
-              using the details below. We aim to respond to privacy requests
-              within a reasonable timeframe required by applicable law.
+      {/* ─── Main content ────────────────────────────────────────────────── */}
+      <div className="container-wrapper">
+        <div className="container grid gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_240px] lg:py-20">
+          <article className="min-w-0">
+            {/* Intro paragraph */}
+            <p className="max-w-prose text-base leading-8 text-muted-foreground">
+              This policy explains what personal information we collect, how we
+              use it, who we share it with, and the choices available to people
+              who use our website, templates, dashboard layouts, and support
+              services.
             </p>
-            <div className="mt-6 flex flex-wrap gap-6">
-              <a
-                href={`mailto:${siteConfig.emails[0]}`}
-                className="group inline-flex items-center gap-3 text-sm transition-colors hover:text-foreground"
-              >
-                <span className="flex size-10 items-center justify-center rounded-lg border border-border/60 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
-                  <MailIcon className="size-4" />
-                </span>
-                <span>
-                  <span className="block font-medium text-foreground">
-                    Email
-                  </span>
-                  <span className="text-muted-foreground">
-                    {siteConfig.emails[0]}
-                  </span>
-                </span>
-              </a>
-              <a
-                href={`tel:${siteConfig.phones[0]}`}
-                className="group inline-flex items-center gap-3 text-sm transition-colors hover:text-foreground"
-              >
-                <span className="flex size-10 items-center justify-center rounded-lg border border-border/60 text-muted-foreground transition-colors group-hover:border-foreground/20 group-hover:text-foreground">
-                  <PhoneIcon className="size-4" />
-                </span>
-                <span>
-                  <span className="block font-medium text-foreground">
-                    Phone
-                  </span>
-                  <span className="text-muted-foreground">
-                    {siteConfig.phones[0]}
-                  </span>
-                </span>
-              </a>
-            </div>
-          </section>
-        </article>
 
-        {/* On This Page – right sidebar */}
-        <PrivacyOnThisPage items={onThisPageItems} />
+            {/* Divider */}
+            <div className="my-10 flex items-center gap-4">
+              <span className="h-px flex-1 bg-border/60" />
+              <ShieldCheckIcon className="size-4 shrink-0 text-muted-foreground/50" />
+              <span className="h-px flex-1 bg-border/60" />
+            </div>
+
+            {/* Policy sections */}
+            <div className="space-y-0">
+              {policySections.map((section, i) => (
+                <section
+                  key={section.id}
+                  id={section.id}
+                  className="group scroll-mt-24 border-t border-border/60 py-10 first:border-t-0 first:pt-0"
+                >
+                  <div className="flex items-baseline gap-4">
+                    {/* Section number gutter */}
+                    <span className="w-6 shrink-0 font-mono text-xs font-semibold text-muted-foreground/40 tabular-nums lg:text-sm">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex-1">
+                      <h2 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                        {section.title.replace(/^\d+\.\s/, "")}
+                      </h2>
+                      <div className="mt-4 space-y-4 text-[0.9375rem] leading-[1.8] text-muted-foreground">
+                        {section.body.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              ))}
+            </div>
+
+            {/* Data categories table */}
+            <section className="mt-10 border-t border-border/60 pt-10">
+              <div className="flex items-baseline gap-4">
+                <span className="w-6 shrink-0" />
+                <div className="flex-1">
+                  <div className="flex items-center gap-2.5">
+                    <CookieIcon className="size-4 text-muted-foreground" />
+                    <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
+                      Data Categories We Handle
+                    </h2>
+                  </div>
+
+                  <div className="mt-6 overflow-hidden border border-border/60">
+                    <table className="w-full text-left text-sm">
+                      <thead>
+                        <tr className="border-b border-border/60 bg-muted/30">
+                          <th className="px-4 py-2.5 font-semibold text-foreground">
+                            Category
+                          </th>
+                          <th className="px-4 py-2.5 font-semibold text-foreground">
+                            Examples
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dataCategories.map(([category, examples], idx) => (
+                          <tr
+                            key={category}
+                            className="border-b border-border/60 transition-colors last:border-0 odd:bg-transparent even:bg-muted/20 hover:bg-muted/40"
+                          >
+                            <td className="px-4 py-3.5 font-medium text-foreground">
+                              {category}
+                            </td>
+                            <td className="px-4 py-3.5 text-muted-foreground">
+                              {examples}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Footer note */}
+            <div className="mt-14 border-t border-border/60 pt-8">
+              <p className="text-xs leading-6 text-muted-foreground/60">
+                For privacy questions or requests, contact us at{" "}
+                <a
+                  href={`mailto:${siteConfig.emails[0]}`}
+                  className="underline underline-offset-2 transition-colors hover:text-muted-foreground"
+                >
+                  {siteConfig.emails[0]}
+                </a>
+                . This policy does not apply to third-party websites, services,
+                or applications linked from our site. Last reviewed{" "}
+                {lastUpdated}.
+              </p>
+            </div>
+          </article>
+
+          {/* Sticky sidebar */}
+          <OnThisPage items={onThisPageItems} />
+        </div>
       </div>
     </div>
   )
