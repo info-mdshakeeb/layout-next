@@ -4,7 +4,6 @@ import { siteConfig } from "@/lib/config"
 import {
   ArrowUpRightIcon,
   CalendarDaysIcon,
-  CheckCircle2Icon,
   CookieIcon,
   DatabaseIcon,
   Globe2Icon,
@@ -16,126 +15,87 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${siteConfig.name}`,
-  description: `Learn how ${siteConfig.name} collects, uses, protects, and manages personal information across its website, templates, and support services.`,
+  title: `Terms of Service | ${siteConfig.name}`,
+  description: `Read our Terms of Service to understand the rules and guidelines for using ${siteConfig.name} products.`,
 }
 
 const lastUpdated = "April 29, 2026"
 
 const summaryItems = [
   {
-    title: "Data we collect",
-    value: "Account, contact, billing, usage, support, and device data.",
-    icon: DatabaseIcon,
-  },
-  {
-    title: "Why we use it",
-    value:
-      "To provide services, secure accounts, process payments, and improve products.",
+    title: "Account Rules",
+    value: "You must be 18+ and provide accurate information.",
     icon: UserCheckIcon,
   },
   {
-    title: "Your choices",
-    value:
-      "You can request access, correction, deletion, or marketing opt-out.",
-    icon: CheckCircle2Icon,
+    title: "Payments & Subscriptions",
+    value: "All payments are processed securely. Subscriptions auto-renew.",
+    icon: DatabaseIcon,
+  },
+  {
+    title: "Termination",
+    value: "We may suspend accounts that violate our usage policies.",
+    icon: ShieldCheckIcon,
   },
 ]
 
 const policySections = [
   {
-    id: "information-we-collect",
-    title: "1. Information We Collect",
+    id: "acceptance",
+    title: "1. Acceptance of Terms",
     body: [
-      "We collect information you provide directly, including your name, email address, phone number, company details, project requirements, support messages, and payment-related details needed to complete a purchase.",
-      "We also collect limited technical information automatically, such as IP address, browser type, device identifiers, pages visited, referring URLs, session timestamps, and approximate location derived from network data.",
+      "By accessing or using our services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.",
+      "These terms apply to all visitors, users, and others who access or use the Service.",
     ],
   },
   {
-    id: "how-we-use-information",
-    title: "2. How We Use Information",
+    id: "user-accounts",
+    title: "2. User Accounts",
     body: [
-      "We use personal information to deliver templates and services, respond to requests, manage accounts, process transactions, prevent abuse, improve site performance, and send service-related notices.",
-      "When you opt in or where permitted by law, we may send product updates, release notes, offers, and educational content. You can unsubscribe from non-essential marketing messages at any time.",
+      "When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms.",
+      "You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password.",
     ],
   },
   {
-    id: "legal-bases",
-    title: "3. Legal Bases for Processing",
+    id: "intellectual-property",
+    title: "3. Intellectual Property",
     body: [
-      "Where applicable privacy laws require a legal basis, we process information to perform a contract, comply with legal obligations, protect legitimate business interests, protect users from fraud or misuse, and honor consent-based preferences.",
-      "Examples include using billing data to complete a purchase, support messages to resolve a request, and analytics data to keep the website reliable and useful.",
+      `The Service and its original content, features, and functionality are and will remain the exclusive property of ${siteConfig.name} and its licensors.`,
+      `Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of ${siteConfig.name}.`,
     ],
   },
   {
-    id: "sharing",
-    title: "4. How We Share Information",
+    id: "termination",
+    title: "4. Termination",
     body: [
-      "We do not sell personal information. We may share limited data with service providers that help us operate the website, process payments, host services, send email, provide analytics, prevent fraud, or deliver customer support.",
-      `We may disclose information if required by law, court order, regulatory request, or to protect the rights, safety, and security of ${siteConfig.name}, our users, or the public.`,
+      "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.",
+      "Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service.",
     ],
   },
   {
-    id: "retention",
-    title: "5. Data Retention",
+    id: "limitation-of-liability",
+    title: "5. Limitation of Liability",
     body: [
-      "We keep personal information only as long as needed for the purpose collected, including account administration, legal compliance, dispute resolution, fraud prevention, accounting, and security.",
-      "Support and account records are periodically reviewed. When information is no longer needed, we delete it, anonymize it, or securely archive it according to operational and legal requirements.",
-    ],
-  },
-  {
-    id: "security",
-    title: "6. Security",
-    body: [
-      "We use reasonable administrative, technical, and organizational safeguards designed to protect personal information against unauthorized access, alteration, disclosure, or destruction.",
-      "No online service can guarantee absolute security. If we learn of a security incident that affects your information, we will take appropriate steps and notify affected users where required.",
-    ],
-  },
-  {
-    id: "international-transfers",
-    title: "7. International Data Transfers",
-    body: [
-      `${siteConfig.name} is based in Dhaka, Bangladesh, and may use providers or infrastructure located in other countries. Your information may be processed outside your region.`,
-      "When required, we use appropriate safeguards for cross-border transfers, such as contractual commitments and security controls from trusted service providers.",
-    ],
-  },
-  {
-    id: "your-rights",
-    title: "8. Your Privacy Rights",
-    body: [
-      "Depending on your location, you may have rights to access, correct, delete, restrict, or object to certain processing of your personal information.",
-      "You may also request a copy of your data or withdraw consent where processing is based on consent. We may need to verify your identity before completing a request.",
-    ],
-  },
-  {
-    id: "children",
-    title: "9. Children",
-    body: [
-      "Our services are intended for business and professional use. We do not knowingly collect personal information from children under 13.",
-      "If you believe a child has provided personal information to us, contact us and we will take appropriate steps to delete it.",
-    ],
-  },
-  {
-    id: "changes",
-    title: "10. Changes to This Policy",
-    body: [
-      "We may update this Privacy Policy to reflect product changes, legal requirements, or operational improvements. The latest version will always show the effective update date.",
-      "If a change materially affects your rights or how we use information, we will provide notice through the website, email, or another reasonable channel.",
+      `In no event shall ${siteConfig.name}, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages.`,
+      'Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis.',
     ],
   },
 ]
 
-const dataCategories = [
-  ["Contact data", "Name, email, phone, company, and support messages"],
+const definitions = [
   [
-    "Transaction data",
-    "Order records, invoices, payment status, and plan details",
+    "Service",
+    `The website, applications, and any other offerings by ${siteConfig.name}`,
+  ],
+  ["User", "Any individual or entity who accesses or uses the Service"],
+  [
+    "Content",
+    "Text, images, or other information that can be posted, uploaded, linked to, or otherwise made available by you",
   ],
   [
-    "Usage data",
-    "Pages viewed, feature usage, timestamps, and referral source",
+    "Account",
+    "A unique account created for you to access our Service or parts of our Service",
   ],
-  ["Device data", "IP address, browser, operating system, and device type"],
 ]
 
 const onThisPageItems = policySections.map((section) => ({
@@ -144,11 +104,11 @@ const onThisPageItems = policySections.map((section) => ({
   level: 2 as const,
 }))
 
-export default function PrivacyPolicyPage() {
+export default function TermsOfServicePage() {
   return (
     <div className="scroll-mt-24 bg-background">
       {/* ─── Hero ────────────────────────────────────────────────────────── */}
-      <PageHeader label="Legal document" title="Privacy Policy" />
+      <PageHeader label="Legal document" title="Terms of Service" />
 
       {/* ─── Meta bar ────────────────────────────────────────────────────── */}
       <div className="border-b border-border/60 bg-muted/40">
@@ -236,10 +196,10 @@ export default function PrivacyPolicyPage() {
                 <span className="mt-2 block w-px flex-1 bg-border/60" />
               </div>
               <p className="pb-10 text-[1rem] leading-[1.85] text-muted-foreground">
-                This policy explains what personal information we collect, how
-                we use it, who we share it with, and the choices available to
-                people who use our website, templates, dashboard layouts, and
-                support services.
+                These Terms of Service govern your use of {siteConfig.name}{" "}
+                website and products. By accessing or using our services, you
+                agree to comply with and be bound by these terms. Please read
+                them carefully.
               </p>
             </div>
 
@@ -283,7 +243,7 @@ export default function PrivacyPolicyPage() {
                   <div className="flex items-center gap-3">
                     <CookieIcon className="size-4 shrink-0 text-muted-foreground/60" />
                     <h2 className="text-[1.0625rem] font-semibold tracking-tight sm:text-[1.125rem]">
-                      Data Categories We Handle
+                      Key Definitions
                     </h2>
                   </div>
 
@@ -292,27 +252,27 @@ export default function PrivacyPolicyPage() {
                       <thead>
                         <tr className="border-b border-border/60">
                           <th className="py-2.5 pr-8 font-semibold text-foreground">
-                            Category
+                            Term
                           </th>
                           <th className="py-2.5 font-semibold text-foreground">
-                            Examples
+                            Definition
                           </th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-border/40">
-                        {dataCategories.map(([category, examples]) => (
+                        {definitions.map(([term, definition]) => (
                           <tr
-                            key={category}
+                            key={term}
                             className="group/row transition-colors hover:bg-muted/30"
                           >
                             <td className="py-3.5 pr-8 font-medium text-foreground">
                               <span className="inline-flex items-center gap-2">
                                 <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40 transition-colors group-hover/row:bg-primary/70" />
-                                {category}
+                                {term}
                               </span>
                             </td>
                             <td className="py-3.5 text-muted-foreground">
-                              {examples}
+                              {definition}
                             </td>
                           </tr>
                         ))}
@@ -327,15 +287,14 @@ export default function PrivacyPolicyPage() {
             <div className="flex gap-5 border-t border-border/60 pt-8">
               <div className="w-7 shrink-0" />
               <p className="text-xs leading-6 text-muted-foreground/50">
-                For privacy questions or requests, contact us at{" "}
+                For questions regarding these terms, contact us at{" "}
                 <a
                   href={`mailto:${siteConfig.emails[0]}`}
                   className="underline underline-offset-2 transition-colors hover:text-muted-foreground"
                 >
                   {siteConfig.emails[0]}
                 </a>
-                . This policy does not apply to third-party websites, services,
-                or applications linked from our site. Last reviewed{" "}
+                . These terms are governed by applicable laws. Last reviewed{" "}
                 {lastUpdated}.
               </p>
             </div>

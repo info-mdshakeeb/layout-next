@@ -1,9 +1,8 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react"
 import { AlignLeftIcon } from "lucide-react"
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -11,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
 
 export type OnThisPageItem = {
   id: string
@@ -24,7 +24,7 @@ export type OnThisPageProps = {
   className?: string
 }
 
-const TOP_OFFSET = 120
+const TOP_OFFSET = 40
 
 function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -61,7 +61,11 @@ function useActiveItem(itemIds: string[]) {
   return activeId
 }
 
-export function OnThisPage({ items, variant = "list", className }: OnThisPageProps) {
+export function OnThisPage({
+  items,
+  variant = "list",
+  className,
+}: OnThisPageProps) {
   const [open, setOpen] = useState(false)
   const itemIds = useMemo(() => items.map((item) => item.id), [items])
   const activeId = useActiveItem(itemIds)
@@ -107,7 +111,10 @@ export function OnThisPage({ items, variant = "list", className }: OnThisPagePro
             On This Page
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="no-scrollbar max-h-[70svh]">
+        <DropdownMenuContent
+          align="start"
+          className="no-scrollbar max-h-[70svh]"
+        >
           {items.map((item) => (
             <DropdownMenuItem
               key={item.id}

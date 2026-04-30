@@ -63,9 +63,9 @@ const footerSections = [
     title: "Policies",
     links: [
       { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms of Service", href: "#terms" },
-      { label: "Cookie Policy", href: "#cookies" },
-      { label: "Refund Policy", href: "#refund" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
+      { label: "Refund Policy", href: "/refund-policy" },
     ],
   },
   {
@@ -87,8 +87,8 @@ const paymentMethods = [
 
 const footerBottomLinks = [
   { label: "Privacy", href: "/privacy-policy" },
-  { label: "Terms", href: "#terms" },
-  { label: "Cookies", href: "#cookies" },
+  { label: "Terms", href: "/terms-of-service" },
+  { label: "Cookies", href: "/cookie-policy" },
 ]
 
 const paymentIcons = {
