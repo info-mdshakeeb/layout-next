@@ -1,6 +1,7 @@
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import React from "react"
 
+import { Toaster } from "@/components/ui/sonner"
 import { ThemeProvider } from "./theme-provider"
 
 export default function Provider({
@@ -9,6 +10,7 @@ export default function Provider({
   return (
     <ThemeProvider>
       <NuqsAdapter>{children}</NuqsAdapter>
+      <Toaster />
     </ThemeProvider>
   )
 }
