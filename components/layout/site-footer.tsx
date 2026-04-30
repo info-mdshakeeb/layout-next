@@ -1,4 +1,3 @@
-import LinkLoadingIndicator from "@/components/link-loading-indicator"
 import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
 import {
@@ -216,7 +215,7 @@ export function SiteFooter() {
                     href={link.href}
                     className="transition-colors hover:text-foreground"
                   >
-                    <LinkLoadingIndicator title={link.label} />
+                    {link.label}
                   </TransitionLink>
                 ))}
               </div>
