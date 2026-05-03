@@ -9,9 +9,9 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="container-wrapper flex flex-1 flex-col px-2">
+    <div className="flex flex-1 flex-col px-2">
       <SidebarProvider
-        className="container min-h-min flex-1 items-start px-3 [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--top-spacing:calc(var(--spacing)*4)]"
+        className="container min-h-min flex-1 items-start px-3 [--container-max:1400px] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--top-spacing:calc(var(--spacing)*4)]"
         style={
           {
             "--sidebar-width": "calc(var(--spacing) * 72)",

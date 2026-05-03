@@ -1,70 +1,52 @@
+"use client"
+
 import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
-import {
-  Code2Icon,
-  CreditCardIcon,
-  LandmarkIcon,
-  LucideIcon,
-  MailIcon,
-  MapPinIcon,
-  NetworkIcon,
-  PhoneIcon,
-  SendIcon,
-  ShieldCheckIcon,
-} from "lucide-react"
-import type { ReactNode } from "react"
+import { Code2Icon, NetworkIcon, SendIcon } from "lucide-react"
 import { Logo } from "./logo"
+import { ModeSwitcher } from "./mood-switcher"
 
 const socialLinks = [
-  {
-    key: "twitter",
-    href: siteConfig.links.twitter,
-    label: "Twitter",
-    icon: SendIcon,
-    hover: "hover:bg-sky-500",
-  },
   {
     key: "github",
     href: siteConfig.links.github,
     label: "GitHub",
     icon: Code2Icon,
-    hover: "hover:bg-zinc-900 dark:hover:bg-zinc-100",
+  },
+  {
+    key: "twitter",
+    href: siteConfig.links.twitter,
+    label: "X",
+    icon: SendIcon,
   },
   {
     key: "linkedin",
     href: siteConfig.links.linkedin,
     label: "LinkedIn",
     icon: NetworkIcon,
-    hover: "hover:bg-blue-600",
   },
 ]
 
-const footerSections = [
+const footerColumns = [
   {
-    title: "Product",
+    title: "Resources",
     links: [
       { label: "Templates", href: "#templates" },
       { label: "Components", href: "#components" },
       { label: "Layouts", href: "#layouts" },
       { label: "Changelog", href: "#changelog" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
       { label: "Documentation", href: "#docs" },
-      { label: "Examples", href: "#examples" },
       { label: "Guides", href: "#guides" },
-      { label: "Support", href: "#support" },
     ],
   },
   {
-    title: "Policies",
+    title: "More",
     links: [
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms of Service", href: "/terms-of-service" },
-      { label: "Cookie Policy", href: "/cookie-policy" },
-      { label: "Refund Policy", href: "/refund-policy" },
+      { label: "Examples", href: "#examples" },
+      { label: "Support", href: "#support" },
+      { label: "Community", href: "#community" },
+      { label: "GitHub", href: siteConfig.links.github },
+      { label: "Status", href: "#status" },
     ],
   },
   {
@@ -73,230 +55,138 @@ const footerSections = [
       { label: "About", href: "#about" },
       { label: "Customers", href: "#customers" },
       { label: "Contact", href: "/contact-us" },
-      { label: "Status", href: "#status" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
+      { label: "Refund Policy", href: "/refund-policy" },
     ],
   },
 ]
 
-const paymentMethods = [
-  { label: "SSLCommerz", type: "gateway" },
-  { label: "Visa", type: "card" },
-  { label: "Mastercard", type: "wallet" },
-]
-
-const footerBottomLinks = [
-  { label: "Privacy", href: "/privacy-policy" },
-  { label: "Terms", href: "/terms-of-service" },
-  { label: "Cookies", href: "/cookie-policy" },
-]
-
-const paymentIcons = {
-  gateway: ShieldCheckIcon,
-  card: CreditCardIcon,
-  wallet: LandmarkIcon,
-}
-
-export function SiteFooter() {
+/* ── Social icon row ──────────────────────────────────────── */
+function SocialRow({ className = "" }: { className?: string }) {
   return (
-    <footer className="relative overflow-hidden border-t bg-background text-foreground">
-      <div className="relative z-10 container-wrapper px-0">
-        <div className="container pt-10">
-          <div className="flex flex-col gap-8 pb-10 xl:flex-row xl:items-center xl:justify-between">
-            <div className="grid gap-6 md:grid-cols-3 xl:flex xl:flex-wrap xl:gap-10">
-              <ContactItem
-                icon={MapPinIcon}
-                title="Address"
-                value={siteConfig.address}
-              />
-              <ContactItem
-                icon={MailIcon}
-                title="Email"
-                value={siteConfig.emails[0]}
-                href={`mailto:${siteConfig.emails[0]}`}
-              />
-              <ContactItem
-                icon={PhoneIcon}
-                title="Hotline"
-                value={siteConfig.phones[0]}
-                href={`tel:${siteConfig.phones[0]}`}
-              />
-            </div>
-
-            <div className="flex gap-3">
-              {socialLinks.map((item) => {
-                const Icon = item.icon
-
-                return (
-                  <a
-                    key={item.key}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${item.label} opens in a new tab`}
-                    className={`group flex size-11 items-center justify-center rounded-full border bg-background/75 text-muted-foreground shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:text-white hover:shadow-md dark:hover:text-background ${item.hover}`}
-                  >
-                    <Icon className="size-5 transition-colors" />
-                  </a>
-                )
-              })}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-10 py-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[2.4fr_1fr_1fr_1fr_1fr]">
-            <FooterSection title={siteConfig.name}>
-              <TransitionLink href="/" className="mb-4 flex items-center gap-3">
-                <span className="">
-                  <Logo className="size-18" />
-                </span>
-              </TransitionLink>
-              <p className="text-sm leading-6 text-muted-foreground">
-                {siteConfig.description}
-              </p>
-            </FooterSection>
-
-            <FooterSection title="Company">
-              <FooterLinkList
-                links={
-                  footerSections.find((group) => group.title === "Company")
-                    ?.links ?? []
-                }
-              />
-            </FooterSection>
-
-            <FooterSection title="Resources">
-              <FooterLinkList
-                links={
-                  footerSections.find((group) => group.title === "Resources")
-                    ?.links ?? []
-                }
-              />
-            </FooterSection>
-
-            <FooterSection title="Policies">
-              <FooterLinkList
-                links={
-                  footerSections.find((group) => group.title === "Policies")
-                    ?.links ?? []
-                }
-              />
-            </FooterSection>
-
-            <FooterSection title="Secure Payment">
-              <div className="flex flex-wrap gap-3">
-                {paymentMethods.map((method) => {
-                  const Icon =
-                    paymentIcons[method.type as keyof typeof paymentIcons] ??
-                    CreditCardIcon
-
-                  return (
-                    <div
-                      key={method.label}
-                      className="flex h-10 items-center gap-2 rounded-lg border bg-background/70 px-3 text-xs font-medium text-muted-foreground shadow-sm"
-                    >
-                      <Icon className="size-4 text-foreground" />
-                      {method.label}
-                    </div>
-                  )
-                })}
-              </div>
-            </FooterSection>
-          </div>
-
-          <div className="py-6">
-            <div className="flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-              <p>
-                &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
-                reserved.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-                {footerBottomLinks.map((link) => (
-                  <TransitionLink
-                    key={link.href}
-                    href={link.href}
-                    className="transition-colors hover:text-foreground"
-                  >
-                    {link.label}
-                  </TransitionLink>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
-function FooterSection({
-  title,
-  children,
-}: {
-  title: string
-  children: ReactNode
-}) {
-  return (
-    <div>
-      <h2 className="mb-5 text-base font-semibold tracking-tight">{title}</h2>
-      {children}
+    <div className={`flex items-center gap-3 ${className}`}>
+      {socialLinks.map((item, i) => {
+        const Icon = item.icon
+        return (
+          <span key={item.key} className="contents">
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={item.label}
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Icon className="size-4" aria-hidden="true" />
+            </a>
+            {i < socialLinks.length - 1 && (
+              <hr className="h-3.5 w-px border-0 bg-border" />
+            )}
+          </span>
+        )
+      })}
     </div>
   )
 }
 
-function FooterLinkList({
-  links,
-}: {
-  links: { label: string; href: string }[]
-}) {
+/* ── Main footer ──────────────────────────────────────────── */
+export function SiteFooter() {
   return (
-    <nav>
-      <ul className="space-y-2.5">
-        {links.map((link) => (
-          <li key={link.href}>
+    <footer className="border-t">
+      <div className="container">
+        {/* ── Main grid ─────────────────────────────────── */}
+        <div className="grid grid-cols-3 gap-x-8 gap-y-10 pt-12 pb-10 md:grid-cols-4 xl:grid-cols-[1fr_1fr_1fr_1fr_1fr_1.6fr]">
+          {/* Brand: full-width row on mobile/tablet, first col on desktop */}
+          <div className="col-span-3 flex items-center justify-between md:col-span-4 xl:col-span-1 xl:flex-col xl:items-start xl:gap-4">
             <TransitionLink
-              href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              href="/"
+              aria-label={`${siteConfig.name} home`}
+              className="group flex min-w-0 items-center gap-1 rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             >
-              {link.label}
+              <Logo className="size-6" />
+              <span className="flex min-w-0 flex-col leading-none">
+                <span className="truncate text-lg font-semibold">
+                  {siteConfig.name.slice(1)}
+                </span>
+              </span>
             </TransitionLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  )
-}
 
-function ContactItem({
-  icon: Icon,
-  title,
-  value,
-  href,
-}: {
-  icon: LucideIcon
-  title: string
-  value: string
-  href?: string
-}) {
-  const content = (
-    <>
-      <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm transition-transform group-hover:scale-105">
-        <Icon className="size-5" />
+            {/* Socials next to logo on mobile/tablet */}
+            <SocialRow className="flex xl:hidden" />
+          </div>
+
+          {/* Link columns */}
+          {footerColumns.map((col) => (
+            <div key={col.title}>
+              <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground uppercase">
+                {col.title}
+              </h4>
+              <nav>
+                <ul className="flex flex-col gap-2.5">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      <TransitionLink
+                        href={link.href}
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </TransitionLink>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          ))}
+
+          {/* Newsletter: full-width on mobile/tablet, last col on desktop */}
+          <div className="col-span-3 md:col-span-4 xl:col-span-1">
+            <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground uppercase">
+              Subscribe to our newsletter
+            </h4>
+            <p className="mb-4 text-[13px] leading-relaxed text-muted-foreground">
+              Stay updated on new releases and features, guides, and case
+              studies.
+            </p>
+            <form
+              className="flex flex-col gap-2 sm:flex-row"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                aria-label="Enter your email"
+                placeholder="you@domain.com"
+                required
+                type="email"
+                name="email"
+                className="h-9 flex-1 rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring/20"
+              />
+              <button
+                type="submit"
+                className="h-9 cursor-pointer rounded-md border border-border bg-foreground px-4 text-sm font-medium whitespace-nowrap text-background transition-opacity hover:opacity-85"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* ── Bottom bar ────────────────────────────────── */}
+        <div className="flex items-center justify-between py-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+            <p className="text-[13px] text-muted-foreground">
+              &copy; {new Date().getFullYear()} {siteConfig.name}, Inc.
+            </p>
+            {/* Socials at bottom-left on desktop only */}
+            <SocialRow className="hidden xl:flex" />
+          </div>
+          <ModeSwitcher />
+        </div>
       </div>
-      <div className="min-w-0">
-        <p className="text-sm font-medium transition-colors group-hover:text-primary">
-          {title}
-        </p>
-        <p className="truncate text-xs text-muted-foreground">{value}</p>
-      </div>
-    </>
+    </footer>
   )
-
-  if (href) {
-    return (
-      <a href={href} className="group flex min-w-0 items-center gap-4">
-        {content}
-      </a>
-    )
-  }
-
-  return <div className="group flex min-w-0 items-center gap-4">{content}</div>
 }
