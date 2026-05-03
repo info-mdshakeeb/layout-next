@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { useLinkStatus } from "next/link"
 
 import React from "react"
-import { TextShimmer } from "./text-shimmer"
+import { TextShimmer } from "../text-shimmer"
 
 export default function LinkLoadingIndicator({
   title,
