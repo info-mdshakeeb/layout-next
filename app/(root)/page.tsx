@@ -1,4 +1,4 @@
-import AuroraGlyph from "@/components/icons"
+import AuroraGlyph from "@/components/elements/icons"
 
 export default function Page() {
   return (
