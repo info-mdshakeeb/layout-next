@@ -7,11 +7,11 @@ import { ModeSwitcher } from "./mood-switcher"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-1000 flex h-full w-full translate-z-0 flex-col items-center justify-around border-b bg-background py-4">
+    <header className="sticky top-0 z-1000 flex h-full w-full translate-z-0 flex-col items-center justify-around border-b bg-background py-3">
       <div className="container flex items-center gap-3 [--container-max:1400px]">
         <Link
           href="/"
-          className="group flex min-w-0 items-center gap-1 rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="group flex min-w-0 items-center rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           <span className="">
             <Logo className="size-6" />
@@ -19,7 +19,7 @@ export function SiteHeader() {
           <svg height="32" viewBox="0 0 32 32" width="32">
             <path
               d="M22 5L9 28"
-              stroke="var(--muted)"
+              stroke="#eaeaea"
               stroke-linecap="round"
               stroke-linejoin="round"
             ></path>

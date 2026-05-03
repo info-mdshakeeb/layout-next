@@ -3,8 +3,12 @@
 import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
 import { Code2Icon, NetworkIcon, SendIcon } from "lucide-react"
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "../ui/input-group"
 import { Logo } from "./logo"
 import { ModeSwitcher } from "./mood-switcher"
 
@@ -150,7 +154,7 @@ export function SiteFooter() {
 
           {/* Newsletter: full-width on mobile/tablet, last col on desktop */}
           <div className="md:col-span-4 lg:col-span-1">
-            <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground uppercase">
+            <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground">
               Subscribe to our newsletter
             </h4>
             <p className="mb-4 text-[13px] leading-relaxed text-muted-foreground">
@@ -158,17 +162,29 @@ export function SiteFooter() {
               studies.
             </p>
             <form
-              className="flex flex-col gap-2 sm:flex-row"
+              className="w-full max-w-60"
               onSubmit={(e) => e.preventDefault()}
             >
-              <Input
-                aria-label="Enter your email"
-                placeholder="you@domain.com"
-                required
-                type="email"
-                name="email"
-              />
-              <Button>Subscribe</Button>
+              <InputGroup className="h-8 border-0 bg-muted">
+                <InputGroupInput
+                  aria-label="Enter your email"
+                  placeholder="you@domain.com"
+                  required
+                  type="email"
+                  name="email"
+                  className="text-sm"
+                />
+                <InputGroupAddon align="inline-end">
+                  <InputGroupButton
+                    type="submit"
+                    variant="outline"
+                    size="xs"
+                    className="bg-background px-2 text-xs"
+                  >
+                    Subscribe
+                  </InputGroupButton>
+                </InputGroupAddon>
+              </InputGroup>
             </form>
           </div>
         </div>

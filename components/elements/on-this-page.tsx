@@ -24,7 +24,7 @@ export type OnThisPageProps = {
   className?: string
 }
 
-const TOP_OFFSET = 40
+const TOP_OFFSET = 25
 
 function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = useState<string | null>(null)
