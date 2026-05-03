@@ -1,9 +1,10 @@
 "use client"
 
-import { AlignLeftIcon } from "lucide-react"
+import { AlignLeftIcon, ArrowRightIcon } from "lucide-react"
 import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react"
 
 import { Button } from "@/components/ui/button"
+import { TransitionLink } from "@/components/transition-link"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,8 +19,15 @@ export type OnThisPageItem = {
   level: 2 | 3
 }
 
+export type SuggestedPageItem = {
+  href: string
+  title: string
+  description?: string
+}
+
 export type OnThisPageProps = {
   items: OnThisPageItem[]
+  suggestedPages?: SuggestedPageItem[]
   variant?: "list" | "dropdown"
   className?: string
 }
@@ -63,6 +71,7 @@ function useActiveItem(itemIds: string[]) {
 
 export function OnThisPage({
   items,
+  suggestedPages = [],
   variant = "list",
   className,
 }: OnThisPageProps) {
@@ -96,7 +105,7 @@ export function OnThisPage({
       window.history.replaceState(null, "", `#${id}`)
     }
 
-  if (!items.length) return null
+  if (!items.length && !suggestedPages.length) return null
 
   if (variant === "dropdown") {
     return (
@@ -136,38 +145,73 @@ export function OnThisPage({
   return (
     <aside className={cn("hidden lg:block", className)}>
       <div className="sticky top-[calc(var(--header-height)+1.5rem)] self-start">
-        <h2 className="text-sm font-medium text-foreground">On This Page</h2>
+        {items.length > 0 && (
+          <>
+            <h2 className="text-sm font-medium text-foreground">
+              On This Page
+            </h2>
 
-        <nav className="mt-4">
-          <ul className="space-y-2 border-l border-border pl-4">
-            {items.map((item) => {
-              const isActive = activeId === item.id
+            <nav className="mt-4">
+              <ul className="space-y-2 border-l border-border pl-4">
+                {items.map((item) => {
+                  const isActive = activeId === item.id
 
-              return (
-                <li key={item.id}>
-                  <a
-                    ref={(element) => {
-                      itemRefs.current[item.id] = element
-                    }}
-                    href={`#${item.id}`}
-                    onClick={handleClick(item.id)}
-                    aria-current={isActive ? "location" : undefined}
-                    title={item.text}
-                    className={cn(
-                      "-ml-[17px] block border-l border-transparent pl-4 text-sm leading-6 text-muted-foreground transition-colors hover:text-foreground",
-                      item.level === 3 && "pl-7 text-[13px]",
-                      isActive && "border-primary text-foreground"
-                    )}
+                  return (
+                    <li key={item.id}>
+                      <a
+                        ref={(element) => {
+                          itemRefs.current[item.id] = element
+                        }}
+                        href={`#${item.id}`}
+                        onClick={handleClick(item.id)}
+                        aria-current={isActive ? "location" : undefined}
+                        title={item.text}
+                        className={cn(
+                          "-ml-[17px] block border-l border-transparent pl-4 text-sm leading-6 text-muted-foreground transition-colors hover:text-foreground",
+                          item.level === 3 && "pl-7 text-[13px]",
+                          isActive && "border-primary text-foreground"
+                        )}
+                      >
+                        <span className="line-clamp-3 overflow-hidden">
+                          {item.text}
+                        </span>
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
+          </>
+        )}
+
+        {suggestedPages.length > 0 && (
+          <section className="mt-8 border-t border-border/60 pt-6">
+            <h2 className="text-sm font-medium text-foreground">
+              Suggested Pages
+            </h2>
+
+            <ul className="mt-4 space-y-3">
+              {suggestedPages.map((page) => (
+                <li key={page.href}>
+                  <TransitionLink
+                    href={page.href}
+                    className="group block border-l border-border pl-4 transition-colors hover:border-primary"
                   >
-                    <span className="line-clamp-3 overflow-hidden">
-                      {item.text}
+                    <span className="flex items-center justify-between gap-3 text-sm font-medium text-foreground">
+                      <span className="line-clamp-2">{page.title}</span>
+                      <ArrowRightIcon className="size-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
                     </span>
-                  </a>
+                    {page.description && (
+                      <span className="mt-1 line-clamp-2 block text-xs leading-5 text-muted-foreground">
+                        {page.description}
+                      </span>
+                    )}
+                  </TransitionLink>
                 </li>
-              )
-            })}
-          </ul>
-        </nav>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </aside>
   )

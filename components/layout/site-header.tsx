@@ -20,8 +20,8 @@ export function SiteHeader() {
             <path
               d="M22 5L9 28"
               stroke="var(--accent)"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></path>
           </svg>
           <span className="flex min-w-0 flex-col leading-none">

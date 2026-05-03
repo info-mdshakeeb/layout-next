@@ -92,6 +92,24 @@ const onThisPageItems = policySections.map((section) => ({
   level: 2 as const,
 }))
 
+const suggestedPages = [
+  {
+    href: "/privacy-policy",
+    title: "Privacy Policy",
+    description: "Learn how personal information is collected and protected.",
+  },
+  {
+    href: "/terms-of-service",
+    title: "Terms of Service",
+    description: "Review the rules for using our products and services.",
+  },
+  {
+    href: "/contact-us",
+    title: "Contact Us",
+    description: "Ask questions about cookies or account preferences.",
+  },
+]
+
 export default function CookiePolicyPage() {
   return (
     <div className="scroll-mt-24 bg-background">
@@ -284,7 +302,7 @@ export default function CookiePolicyPage() {
         </article>
 
         {/* Sticky sidebar */}
-        <OnThisPage items={onThisPageItems} />
+        <OnThisPage items={onThisPageItems} suggestedPages={suggestedPages} />
       </div>
     </div>
   )

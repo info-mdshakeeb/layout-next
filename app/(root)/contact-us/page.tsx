@@ -95,6 +95,24 @@ const onThisPageItems = [
   { id: "office-hours", text: "Office Hours", level: 2 as const },
 ]
 
+const suggestedPages = [
+  {
+    href: "/privacy-policy",
+    title: "Privacy Policy",
+    description: "Learn how contact and support data is handled.",
+  },
+  {
+    href: "/refund-policy",
+    title: "Refund Policy",
+    description: "Check refund eligibility before sending a request.",
+  },
+  {
+    href: "/terms-of-service",
+    title: "Terms of Service",
+    description: "Review service terms for bookings and support.",
+  },
+]
+
 export default function ContactUsPage() {
   return (
     <div className="scroll-mt-24 bg-background">
@@ -367,7 +385,7 @@ export default function ContactUsPage() {
           </div>
         </article>
 
-        <OnThisPage items={onThisPageItems} />
+        <OnThisPage items={onThisPageItems} suggestedPages={suggestedPages} />
       </div>
     </div>
   )

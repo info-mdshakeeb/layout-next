@@ -96,6 +96,24 @@ const onThisPageItems = policySections.map((section) => ({
   level: 2 as const,
 }))
 
+const suggestedPages = [
+  {
+    href: "/terms-of-service",
+    title: "Terms of Service",
+    description: "Review the rules for purchases, accounts, and service use.",
+  },
+  {
+    href: "/privacy-policy",
+    title: "Privacy Policy",
+    description: "Learn how order and support data is handled.",
+  },
+  {
+    href: "/contact-us",
+    title: "Contact Us",
+    description: "Send refund questions or support requests to our team.",
+  },
+]
+
 export default function RefundPolicyPage() {
   return (
     <div className="scroll-mt-24 bg-background">
@@ -286,7 +304,7 @@ export default function RefundPolicyPage() {
         </article>
 
         {/* Sticky sidebar */}
-        <OnThisPage items={onThisPageItems} />
+        <OnThisPage items={onThisPageItems} suggestedPages={suggestedPages} />
       </div>
     </div>
   )

@@ -105,6 +105,29 @@ const onThisPageItems = policySections.map((section) => ({
   level: 2 as const,
 }))
 
+const suggestedPages = [
+  {
+    href: "/privacy-policy",
+    title: "Privacy Policy",
+    description: "Learn how personal information is collected and protected.",
+  },
+  {
+    href: "/refund-policy",
+    title: "Refund Policy",
+    description: "Check refund eligibility, timing, and support steps.",
+  },
+  {
+    href: "/cookie-policy",
+    title: "Cookie Policy",
+    description: "See how cookies and similar technologies are used.",
+  },
+  {
+    href: "/contact-us",
+    title: "Contact Us",
+    description: "Reach support for legal or account questions.",
+  },
+]
+
 export default function TermsOfServicePage() {
   return (
     <div className="scroll-mt-24 bg-background">
@@ -297,7 +320,7 @@ export default function TermsOfServicePage() {
         </article>
 
         {/* Sticky sidebar */}
-        <OnThisPage items={onThisPageItems} />
+        <OnThisPage items={onThisPageItems} suggestedPages={suggestedPages} />
       </div>
     </div>
   )
