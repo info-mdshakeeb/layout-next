@@ -21,17 +21,17 @@ export function PageHeader({
       className={cn("bg-cover bg-fixed bg-center bg-no-repeat", className)}
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
-      <div className="container flex h-36 items-end justify-start gap-4 pb-6 lg:h-48 lg:pb-8">
+      <div className="container flex h-30 items-end justify-start gap-4 pb-7 sm:h-48 lg:h-48 lg:pb-8">
         {/* Vertical accent bar */}
-        <span className="block h-10 w-[3px] shrink-0 bg-primary lg:h-14" />
+        <span className="block h-12 w-0.75 shrink-0 bg-primary sm:h-14" />
 
         <div>
           {label && (
-            <p className="text-xs font-medium tracking-[0.2em] text-primary/80 uppercase lg:text-sm">
+            <p className="text-[13px] font-medium tracking-[0.2em] text-primary/80 uppercase lg:text-sm">
               {label}
             </p>
           )}
-          <h1 className="mt-0.5 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-5xl">
+          <h1 className="mt-1 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             {title}
           </h1>
         </div>

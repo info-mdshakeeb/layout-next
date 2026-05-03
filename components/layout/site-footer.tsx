@@ -3,6 +3,8 @@
 import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
 import { Code2Icon, NetworkIcon, SendIcon } from "lucide-react"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
 import { Logo } from "./logo"
 import { ModeSwitcher } from "./mood-switcher"
 
@@ -101,9 +103,9 @@ export function SiteFooter() {
     <footer className="border-t">
       <div className="container">
         {/* ── Main grid ─────────────────────────────────── */}
-        <div className="grid grid-cols-3 gap-x-8 gap-y-10 pt-12 pb-10 md:grid-cols-4 xl:grid-cols-[1fr_1fr_1fr_1fr_1fr_1.6fr]">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 pt-12 pb-10 md:grid-cols-4 lg:grid-cols-[1fr_minmax(0,4.6fr)_minmax(250px,1.45fr)]">
           {/* Brand: full-width row on mobile/tablet, first col on desktop */}
-          <div className="col-span-3 flex items-center justify-between md:col-span-4 xl:col-span-1 xl:flex-col xl:items-start xl:gap-4">
+          <div className="flex items-center justify-between md:col-span-4 lg:col-span-1 lg:flex-col lg:items-start lg:justify-start lg:gap-4">
             <TransitionLink
               href="/"
               aria-label={`${siteConfig.name} home`}
@@ -118,34 +120,36 @@ export function SiteFooter() {
             </TransitionLink>
 
             {/* Socials next to logo on mobile/tablet */}
-            <SocialRow className="flex xl:hidden" />
+            <SocialRow className="flex lg:hidden" />
           </div>
 
           {/* Link columns */}
-          {footerColumns.map((col) => (
-            <div key={col.title}>
-              <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground uppercase">
-                {col.title}
-              </h4>
-              <nav>
-                <ul className="flex flex-col gap-2.5">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
-                      <TransitionLink
-                        href={link.href}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {link.label}
-                      </TransitionLink>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          ))}
+          <div className="flex flex-wrap gap-x-10 gap-y-8 md:col-span-4 lg:col-span-1">
+            {footerColumns.map((col) => (
+              <div key={col.title} className="flex-[1_1_1] whitespace-nowrap">
+                <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground uppercase">
+                  {col.title}
+                </h4>
+                <nav>
+                  <ul className="flex flex-col gap-2.5">
+                    {col.links.map((link) => (
+                      <li key={link.label}>
+                        <TransitionLink
+                          href={link.href}
+                          className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                        >
+                          {link.label}
+                        </TransitionLink>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            ))}
+          </div>
 
           {/* Newsletter: full-width on mobile/tablet, last col on desktop */}
-          <div className="col-span-3 md:col-span-4 xl:col-span-1">
+          <div className="md:col-span-4 lg:col-span-1">
             <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground uppercase">
               Subscribe to our newsletter
             </h4>
@@ -157,20 +161,14 @@ export function SiteFooter() {
               className="flex flex-col gap-2 sm:flex-row"
               onSubmit={(e) => e.preventDefault()}
             >
-              <input
+              <Input
                 aria-label="Enter your email"
                 placeholder="you@domain.com"
                 required
                 type="email"
                 name="email"
-                className="h-9 flex-1 rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring/20"
               />
-              <button
-                type="submit"
-                className="h-9 cursor-pointer rounded-md border border-border bg-foreground px-4 text-sm font-medium whitespace-nowrap text-background transition-opacity hover:opacity-85"
-              >
-                Subscribe
-              </button>
+              <Button>Subscribe</Button>
             </form>
           </div>
         </div>
@@ -182,7 +180,7 @@ export function SiteFooter() {
               &copy; {new Date().getFullYear()} {siteConfig.name}, Inc.
             </p>
             {/* Socials at bottom-left on desktop only */}
-            <SocialRow className="hidden xl:flex" />
+            <SocialRow className="hidden lg:flex" />
           </div>
           <ModeSwitcher />
         </div>
