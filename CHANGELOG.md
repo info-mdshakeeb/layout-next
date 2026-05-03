@@ -1,5 +1,11 @@
 # layout-next
 
+## 1.0.0
+
+### Major Changes
+
+- Mark the template as stable and ready to use, add suggested page links to the legal and contact page sidebars, and fix release-readiness checks for shared hooks.
+
 ## 0.0.3
 
 ### Patch Changes

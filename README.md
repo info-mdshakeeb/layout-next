@@ -1,6 +1,8 @@
 # Layout Next
 
-A Next.js layout starter built with the App Router, Tailwind CSS, shadcn/ui, and theme support.
+A stable, ready-to-use Next.js layout template built with the App Router, Tailwind CSS, shadcn/ui, and theme support.
+
+Current stable version: `1.0.0`
 
 ## Stack
 
