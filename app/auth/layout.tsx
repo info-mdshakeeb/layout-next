@@ -1,6 +1,6 @@
 import { Logo } from "@/components/layout/logo"
+import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
-import Link from "next/link"
 
 export default function AuthLayout({
   children,
@@ -30,7 +30,7 @@ export default function AuthLayout({
 
       {/* ── Floating logo mark (top) ── */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2 sm:top-10">
-        <Link
+        <TransitionLink
           href="/"
           className="group inline-flex items-center gap-2.5 transition-opacity duration-300 hover:opacity-70"
         >
@@ -38,7 +38,7 @@ export default function AuthLayout({
           <span className="text-sm font-semibold tracking-wide text-foreground/60 uppercase">
             {siteConfig.name}
           </span>
-        </Link>
+        </TransitionLink>
       </div>
 
       {/* ── Centered form content ── */}
