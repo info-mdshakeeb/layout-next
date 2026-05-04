@@ -26,7 +26,7 @@ export default function AuthLayout({
       />
 
       {/* Soft radial glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 size-[min(800px,100vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/[0.015] blur-[100px]" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 size-[min(800px,100vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/1.5 blur-[100px]" />
 
       {/* ── Floating logo mark (top) ── */}
       <div className="absolute top-8 left-1/2 z-10 -translate-x-1/2 bg-background backdrop-blur-2xl">
