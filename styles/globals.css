@@ -134,7 +134,7 @@
 }
 
 @utility container {
-  @apply mx-auto w-full px-2;
+  @apply mx-auto w-full px-4;
   max-width: var(--container-max, calc(1200px + (24px * 2)));
 }
 

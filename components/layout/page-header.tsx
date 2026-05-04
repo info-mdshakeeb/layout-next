@@ -27,7 +27,7 @@ export function PageHeader({
 
         <div>
           {label && (
-            <p className="text-[13px] font-medium tracking-[0.2em] text-primary/80 uppercase lg:text-sm">
+            <p className="text-sm font-medium tracking-[0.2em] text-primary/80 uppercase">
               {label}
             </p>
           )}

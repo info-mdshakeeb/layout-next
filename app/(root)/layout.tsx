@@ -9,7 +9,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     >
       <SiteHeader />
       <main className="flex min-h-0 flex-1 flex-col">{children}</main>
-      <SiteFooter />
+      <div className="bottom-0 -z-10 shrink-0 bg-background md:sticky">
+        <SiteFooter />
+      </div>
     </div>
   )
 }

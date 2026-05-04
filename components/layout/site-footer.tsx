@@ -131,7 +131,7 @@ export function SiteFooter() {
           <div className="flex flex-wrap gap-x-10 gap-y-8 md:col-span-4 lg:col-span-1">
             {footerColumns.map((col) => (
               <div key={col.title} className="flex-[1_1_1] whitespace-nowrap">
-                <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground uppercase">
+                <h4 className="mb-3.5 text-sm font-semibold tracking-wider text-foreground uppercase">
                   {col.title}
                 </h4>
                 <nav>
@@ -154,10 +154,10 @@ export function SiteFooter() {
 
           {/* Newsletter: full-width on mobile/tablet, last col on desktop */}
           <div className="md:col-span-4 lg:col-span-1">
-            <h4 className="mb-3.5 text-[13px] font-semibold tracking-wider text-foreground">
-              Subscribe to our newsletter
+            <h4 className="mb-3.5 text-sm font-semibold tracking-wider text-foreground uppercase">
+              Subscribe
             </h4>
-            <p className="mb-4 text-[13px] leading-relaxed text-muted-foreground">
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
               Stay updated on new releases and features, guides, and case
               studies.
             </p>
@@ -192,7 +192,7 @@ export function SiteFooter() {
         {/* ── Bottom bar ────────────────────────────────── */}
         <div className="flex items-center justify-between py-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-            <p className="text-[13px] text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} {siteConfig.name}, Inc.
             </p>
             {/* Socials at bottom-left on desktop only */}

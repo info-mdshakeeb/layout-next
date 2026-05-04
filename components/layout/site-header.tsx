@@ -25,9 +25,9 @@ export function SiteHeader() {
             ></path>
           </svg>
           <span className="flex min-w-0 flex-col leading-none">
-            <span className="truncate text-lg font-semibold">
+            <h1 className="truncate text-lg font-semibold">
               {siteConfig.name}
-            </span>
+            </h1>
           </span>
         </Link>
 

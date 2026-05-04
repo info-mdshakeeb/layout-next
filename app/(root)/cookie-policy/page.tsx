@@ -198,7 +198,7 @@ export default function CookiePolicyPage() {
               <ShieldCheckIcon className="size-5 shrink-0 text-primary/60" />
               <span className="mt-2 block w-px flex-1 bg-border/60" />
             </div>
-            <p className="pb-10 text-[1rem] leading-[1.85] text-muted-foreground">
+            <p className="pb-10 text-sm leading-7 text-muted-foreground">
               This Cookie Policy explains how {siteConfig.name} uses cookies and
               similar technologies to recognize you when you visit our website.
               It explains what these technologies are and why we use them, as
@@ -213,9 +213,9 @@ export default function CookiePolicyPage() {
               id={section.id}
               className="scroll-mt-24 border-t border-border/60 py-10"
             >
-              <div className="flex gap-5">
+              <div className="flex gap-4">
                 <div className="flex w-7 shrink-0 flex-col items-center">
-                  <span className="font-mono text-[11px] font-semibold text-muted-foreground/35 tabular-nums">
+                  <span className="font-mono text-xs font-semibold text-muted-foreground/35 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="mt-3 block w-px flex-1 bg-border/40" />
@@ -223,12 +223,12 @@ export default function CookiePolicyPage() {
 
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <span className="block h-5 w-[2px] shrink-0 bg-primary/50" />
-                    <h2 className="text-[1.0625rem] font-semibold tracking-tight text-foreground sm:text-[1.125rem]">
+                    <span className="block h-5 w-0.5 shrink-0 bg-primary/50" />
+                    <h2 className="font-semibold tracking-tight text-foreground">
                       {section.title.replace(/^\d+\.\s/, "")}
                     </h2>
                   </div>
-                  <div className="mt-4 space-y-3.5 text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                  <div className="mt-4 space-y-3.5 text-sm leading-[1.85] text-muted-foreground">
                     {section.body.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
@@ -245,7 +245,7 @@ export default function CookiePolicyPage() {
               <div className="flex-1">
                 <div className="flex items-center gap-3">
                   <CookieIcon className="size-4 shrink-0 text-muted-foreground/60" />
-                  <h2 className="text-[1.0625rem] font-semibold tracking-tight sm:text-[1.125rem]">
+                  <h2 className="font-semibold tracking-tight">
                     Types of Cookies We Use
                   </h2>
                 </div>
