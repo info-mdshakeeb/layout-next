@@ -30,7 +30,7 @@ export default async function page(props: PageProps<"/auth/two-factor/otp">) {
         <FieldLabel>Verification</FieldLabel>
         <FieldDescription>
           <Link href="/auth/two-factor">
-            <LinkLoadingIndicator title="Use authenticator" as="span" />
+            <LinkLoadingIndicator title="Use authenticator" />
           </Link>
         </FieldDescription>
       </FieldContent>
@@ -42,7 +42,7 @@ export default async function page(props: PageProps<"/auth/two-factor/otp">) {
       <FieldDescription className="">
         Having trouble?{" "}
         <Link href="/auth/login">
-          <LinkLoadingIndicator title="Back to login" as="span" />
+          <LinkLoadingIndicator title="Back to login" />
         </Link>
       </FieldDescription>
     </div>
