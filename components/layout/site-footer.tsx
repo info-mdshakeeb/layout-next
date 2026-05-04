@@ -1,7 +1,7 @@
 "use client"
 
 import { TransitionLink } from "@/components/transition-link"
-import { siteConfig } from "@/lib/config"
+import { footerNavigation, siteConfig } from "@/lib/config"
 import { Code2Icon, NetworkIcon, SendIcon } from "lucide-react"
 import {
   InputGroup,
@@ -30,47 +30,6 @@ const socialLinks = [
     href: siteConfig.links.linkedin,
     label: "LinkedIn",
     icon: NetworkIcon,
-  },
-]
-
-const footerColumns = [
-  {
-    title: "Resources",
-    links: [
-      { label: "Templates", href: "#templates" },
-      { label: "Components", href: "#components" },
-      { label: "Layouts", href: "#layouts" },
-      { label: "Changelog", href: "#changelog" },
-      { label: "Documentation", href: "#docs" },
-      { label: "Guides", href: "#guides" },
-    ],
-  },
-  {
-    title: "More",
-    links: [
-      { label: "Examples", href: "#examples" },
-      { label: "Support", href: "#support" },
-      { label: "Community", href: "#community" },
-      { label: "GitHub", href: siteConfig.links.github },
-      { label: "Status", href: "#status" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "#about" },
-      { label: "Customers", href: "#customers" },
-      { label: "Contact", href: "/contact-us" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "/privacy-policy" },
-      { label: "Terms of Service", href: "/terms-of-service" },
-      { label: "Cookie Policy", href: "/cookie-policy" },
-      { label: "Refund Policy", href: "/refund-policy" },
-    ],
   },
 ]
 
@@ -104,7 +63,7 @@ function SocialRow({ className = "" }: { className?: string }) {
 /* ── Main footer ──────────────────────────────────────────── */
 export function SiteFooter() {
   return (
-    <footer className="border-t">
+    <footer className="">
       <div className="container">
         {/* ── Main grid ─────────────────────────────────── */}
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 pt-12 pb-10 md:grid-cols-4 lg:grid-cols-[1fr_minmax(0,4.6fr)_minmax(250px,1.45fr)]">
@@ -129,7 +88,7 @@ export function SiteFooter() {
 
           {/* Link columns */}
           <div className="flex flex-wrap gap-x-10 gap-y-8 md:col-span-4 lg:col-span-1">
-            {footerColumns.map((col) => (
+            {footerNavigation.map((col) => (
               <div key={col.title} className="flex-[1_1_1] whitespace-nowrap">
                 <h4 className="mb-3.5 text-sm font-semibold tracking-wider text-foreground uppercase">
                   {col.title}

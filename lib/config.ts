@@ -7,12 +7,6 @@ export const siteConfig = {
   address: "House 24, Road 8, Dhaka, Bangladesh",
   emails: ["hello@synth-co.demo"],
   phones: ["+880 1700 000000"],
-  nav: [
-    { label: "Templates", href: "#templates" },
-    { label: "Components", href: "#components" },
-    { label: "Layouts", href: "#layouts" },
-    { label: "Pricing", href: "#pricing" },
-  ],
   footerCta: {
     title: "Start with a cleaner layout today",
     description:
@@ -30,6 +24,47 @@ export const siteConfig = {
     url: "",
   },
 }
+
+export const footerNavigation = [
+  {
+    title: "Resources",
+    links: [
+      { label: "Templates", href: "#templates" },
+      { label: "Components", href: "#components" },
+      { label: "Layouts", href: "#layouts" },
+      { label: "Changelog", href: "#changelog" },
+      { label: "Documentation", href: "#docs" },
+      { label: "Guides", href: "#guides" },
+    ],
+  },
+  {
+    title: "More",
+    links: [
+      { label: "Examples", href: "#examples" },
+      { label: "Support", href: "#support" },
+      { label: "Community", href: "#community" },
+      { label: "GitHub", href: siteConfig.links.github },
+      { label: "Status", href: "#status" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Customers", href: "#customers" },
+      { label: "Contact", href: "/contact-us" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
+      { label: "Refund Policy", href: "/refund-policy" },
+    ],
+  },
+]
 
 export const META_THEME_COLORS = {
   light: "#ffffff",

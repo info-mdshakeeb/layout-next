@@ -7,8 +7,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       data-slot="layout"
       className="group/layout relative z-10 flex min-h-svh flex-col bg-background has-data-[slot=designer]:h-svh has-data-[slot=designer]:overflow-hidden"
     >
+      {/* <SiteHeader /> */}
       <SiteHeader />
-      <main className="flex min-h-0 flex-1 flex-col">{children}</main>
+      <main className="flex min-h-0 flex-1 flex-col pt-16">{children}</main>
       <div className="bottom-0 -z-10 shrink-0 bg-background md:sticky">
         <SiteFooter />
       </div>
