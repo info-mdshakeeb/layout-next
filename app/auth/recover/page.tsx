@@ -50,7 +50,7 @@ export default function Page() {
           <FieldDescription className="">
             Remembered your password?{" "}
             <Link href="/auth/login">
-              <LinkLoadingIndicator title="Log in" as="span" />
+              <LinkLoadingIndicator title="Log in" />
             </Link>
           </FieldDescription>
         </>
