@@ -29,7 +29,7 @@ export default function AuthLayout({
       <div className="pointer-events-none absolute top-1/2 left-1/2 size-[min(800px,100vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/[0.015] blur-[100px]" />
 
       {/* ── Floating logo mark (top) ── */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 sm:top-10">
+      <div className="absolute top-8 left-1/2 z-10 -translate-x-1/2 bg-background backdrop-blur-2xl">
         <TransitionLink
           href="/"
           className="group inline-flex items-center gap-2.5 transition-opacity duration-300 hover:opacity-70"
@@ -40,19 +40,32 @@ export default function AuthLayout({
           </span>
         </TransitionLink>
       </div>
-
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+        linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+        linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)
+      `,
+          backgroundSize: "35px 35px",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
+        }}
+      />
       {/* ── Centered form content ── */}
       <div
-        className="relative z-10 container py-24"
+        className="relative z-10 container mx-3 rounded-md bg-background"
         style={{ "--container-max": "400px" } as React.CSSProperties}
       >
         {/* Thin top accent bar */}
-        <div className="mx-auto mb-10 h-px w-12 bg-gradient-to-r from-transparent via-foreground/30 to-transparent" />
+        <div className="mx-auto mb-6 h-px w-12 bg-linear-to-r from-transparent via-foreground/30 to-transparent" />
 
         {children}
 
         {/* Thin bottom accent bar */}
-        <div className="mx-auto mt-10 h-px w-12 bg-gradient-to-r from-transparent via-foreground/30 to-transparent" />
+        <div className="mx-auto mt-6 h-px w-12 bg-linear-to-r from-transparent via-foreground/30 to-transparent" />
       </div>
 
       {/* ── Bottom copyright ── */}
