@@ -1,4 +1,5 @@
 import { OnThisPage } from "@/components/elements/on-this-page"
+import { SuggestedPages } from "@/components/elements/suggested-pages"
 import { PageHeader } from "@/components/layout/page-header"
 import { TransitionLink } from "@/components/transition-link"
 import { Badge } from "@/components/ui/badge"
@@ -385,7 +386,12 @@ export default function ContactUsPage() {
           </div>
         </article>
 
-        <OnThisPage items={onThisPageItems} suggestedPages={suggestedPages} />
+        <aside className={"hidden lg:block"}>
+          <div className="sticky top-[calc(var(--header-height)+1.5rem)] self-start">
+            <OnThisPage items={onThisPageItems} />
+            <SuggestedPages pages={suggestedPages} />
+          </div>
+        </aside>
       </div>
     </div>
   )
