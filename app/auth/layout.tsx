@@ -40,7 +40,7 @@ export default function AuthLayout({
           </span>
         </TransitionLink>
       </div>
-      <div
+      {/* <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
@@ -53,7 +53,7 @@ export default function AuthLayout({
           maskImage:
             "radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)",
         }}
-      />
+      /> */}
       {/* ── Centered form content ── */}
       <div
         className="relative z-10 container mx-3 rounded-md bg-background"

@@ -12,7 +12,6 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { footerNavigation, siteConfig } from "@/lib/config"
 import { cn } from "@/lib/utils"
@@ -281,10 +280,9 @@ export function SiteHeader() {
                         asChild
                         data-active={active ? "true" : undefined}
                         className={cn(
-                          navigationMenuTriggerStyle(),
+                          "data-active:bg-transparent data-active:hover:bg-transparent data-active:focus:bg-transparent",
                           "bg-transparent text-muted-foreground",
-                          "hover:bg-accent hover:text-accent-foreground",
-                          "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground"
+                          "hover:bg-none! hover:text-accent-foreground"
                         )}
                       >
                         <TransitionLink
@@ -379,7 +377,7 @@ export function SiteHeader() {
                             onNavigate={closeNow}
                             className={cn(
                               "group inline-flex items-center gap-2",
-                              "text-2xl leading-none font-medium tracking-tight",
+                              "text-3xl leading-none font-medium tracking-tight",
                               "transition-colors hover:text-muted-foreground"
                             )}
                           />
