@@ -6,6 +6,8 @@ export default function page() {
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-screen"></div>
+        <div className="h-screen"></div>
+        <div className="h-screen"></div>
       </div>
     </div>
   )

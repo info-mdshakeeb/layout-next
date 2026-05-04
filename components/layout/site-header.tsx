@@ -1,6 +1,7 @@
 import { siteConfig } from "@/lib/config"
 import { ArrowRightIcon, MenuIcon } from "lucide-react"
 import Link from "next/link"
+import { TransitionLink } from "../transition-link"
 import { Button } from "../ui/button"
 import { Logo } from "./logo"
 import { ModeSwitcher } from "./mood-switcher"
@@ -9,7 +10,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-1000 flex h-full w-full translate-z-0 flex-col items-center justify-around border-b bg-background py-3">
       <div className="container flex items-center gap-3 [--container-max:1400px]">
-        <Link
+        <TransitionLink
           href="/"
           className="group flex min-w-0 items-center rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
@@ -29,7 +30,7 @@ export function SiteHeader() {
               {siteConfig.name}
             </h1>
           </span>
-        </Link>
+        </TransitionLink>
 
         <nav className="hidden items-center gap-1 lg:flex">
           {siteConfig.nav.map((item) => (

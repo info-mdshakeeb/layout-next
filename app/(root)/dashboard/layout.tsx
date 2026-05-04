@@ -9,7 +9,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-1 flex-col px-2">
+    <div className="flex flex-1 flex-col bg-background px-2">
       <SidebarProvider
         className="container min-h-min flex-1 items-start px-3 [--container-max:1400px] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--top-spacing:calc(var(--spacing)*4)]"
         style={
