@@ -1,4 +1,4 @@
-# layout-next
+# template-next
 
 ## 1.0.0
 

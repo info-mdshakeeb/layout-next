@@ -18,126 +18,77 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${siteConfig.name}`,
-  description: `Learn how ${siteConfig.name} collects, uses, protects, and manages personal information across its website, templates, and support services.`,
+  title: `Refund Policy | ${siteConfig.name}`,
+  description:
+    "Learn about our refund policy and how we handle refunds for digital products and subscriptions.",
 }
 
 const lastUpdated = "April 29, 2026"
 
 const summaryItems = [
   {
-    title: "Data we collect",
-    value: "Account, contact, billing, usage, support, and device data.",
+    title: "Money-Back Guarantee",
+    value: "We offer a 14-day money-back guarantee on all our products.",
+    icon: CheckCircle2Icon,
+  },
+  {
+    title: "Digital Products",
+    value: "Refunds for digital products are assessed on a case-by-case basis.",
     icon: DatabaseIcon,
   },
   {
-    title: "Why we use it",
-    value:
-      "To provide services, secure accounts, process payments, and improve products.",
+    title: "Support",
+    value: "Please contact our support team before requesting a refund.",
     icon: UserCheckIcon,
-  },
-  {
-    title: "Your choices",
-    value:
-      "You can request access, correction, deletion, or marketing opt-out.",
-    icon: CheckCircle2Icon,
   },
 ]
 
 const policySections = [
   {
-    id: "information-we-collect",
-    title: "1. Information We Collect",
+    id: "general-refund-terms",
+    title: "1. General Refund Terms",
     body: [
-      "We collect information you provide directly, including your name, email address, phone number, company details, project requirements, support messages, and payment-related details needed to complete a purchase.",
-      "We also collect limited technical information automatically, such as IP address, browser type, device identifiers, pages visited, referring URLs, session timestamps, and approximate location derived from network data.",
+      "We want you to be completely satisfied with your purchase. If you are not satisfied with your purchase, you may be eligible for a refund.",
+      "All refund requests must be made within 14 days of the original purchase date.",
     ],
   },
   {
-    id: "how-we-use-information",
-    title: "2. How We Use Information",
+    id: "digital-downloads",
+    title: "2. Digital Downloads",
     body: [
-      "We use personal information to deliver templates and services, respond to requests, manage accounts, process transactions, prevent abuse, improve site performance, and send service-related notices.",
-      "When you opt in or where permitted by law, we may send product updates, release notes, offers, and educational content. You can unsubscribe from non-essential marketing messages at any time.",
+      "Due to the nature of digital products, refunds are generally not provided once a product has been downloaded.",
+      "However, if you experience technical issues that prevent you from using the product, we will work with you to resolve the issue. If the issue cannot be resolved, a refund may be issued at our discretion.",
     ],
   },
   {
-    id: "legal-bases",
-    title: "3. Legal Bases for Processing",
+    id: "subscriptions",
+    title: "3. Subscriptions",
     body: [
-      "Where applicable privacy laws require a legal basis, we process information to perform a contract, comply with legal obligations, protect legitimate business interests, protect users from fraud or misuse, and honor consent-based preferences.",
-      "Examples include using billing data to complete a purchase, support messages to resolve a request, and analytics data to keep the website reliable and useful.",
+      "Subscription fees are non-refundable. You may cancel your subscription at any time, and you will continue to have access to the service through the end of your billing period.",
+      "We do not provide refunds or credits for any partial subscription periods.",
     ],
   },
   {
-    id: "sharing",
-    title: "4. How We Share Information",
+    id: "how-to-request",
+    title: "4. How to Request a Refund",
     body: [
-      "We do not sell personal information. We may share limited data with service providers that help us operate the website, process payments, host services, send email, provide analytics, prevent fraud, or deliver customer support.",
-      `We may disclose information if required by law, court order, regulatory request, or to protect the rights, safety, and security of ${siteConfig.name}, our users, or the public.`,
-    ],
-  },
-  {
-    id: "retention",
-    title: "5. Data Retention",
-    body: [
-      "We keep personal information only as long as needed for the purpose collected, including account administration, legal compliance, dispute resolution, fraud prevention, accounting, and security.",
-      "Support and account records are periodically reviewed. When information is no longer needed, we delete it, anonymize it, or securely archive it according to operational and legal requirements.",
-    ],
-  },
-  {
-    id: "security",
-    title: "6. Security",
-    body: [
-      "We use reasonable administrative, technical, and organizational safeguards designed to protect personal information against unauthorized access, alteration, disclosure, or destruction.",
-      "No online service can guarantee absolute security. If we learn of a security incident that affects your information, we will take appropriate steps and notify affected users where required.",
-    ],
-  },
-  {
-    id: "international-transfers",
-    title: "7. International Data Transfers",
-    body: [
-      `${siteConfig.name} is based in Dhaka, Bangladesh, and may use providers or infrastructure located in other countries. Your information may be processed outside your region.`,
-      "When required, we use appropriate safeguards for cross-border transfers, such as contractual commitments and security controls from trusted service providers.",
-    ],
-  },
-  {
-    id: "your-rights",
-    title: "8. Your Privacy Rights",
-    body: [
-      "Depending on your location, you may have rights to access, correct, delete, restrict, or object to certain processing of your personal information.",
-      "You may also request a copy of your data or withdraw consent where processing is based on consent. We may need to verify your identity before completing a request.",
-    ],
-  },
-  {
-    id: "children",
-    title: "9. Children",
-    body: [
-      "Our services are intended for business and professional use. We do not knowingly collect personal information from children under 13.",
-      "If you believe a child has provided personal information to us, contact us and we will take appropriate steps to delete it.",
-    ],
-  },
-  {
-    id: "changes",
-    title: "10. Changes to This Policy",
-    body: [
-      "We may update this Privacy Policy to reflect product changes, legal requirements, or operational improvements. The latest version will always show the effective update date.",
-      "If a change materially affects your rights or how we use information, we will provide notice through the website, email, or another reasonable channel.",
+      "To request a refund, please contact our support team with your order number and a detailed explanation of why you are requesting a refund.",
+      "We aim to process all refund requests within 5-7 business days.",
     ],
   },
 ]
 
-const dataCategories = [
-  ["Contact data", "Name, email, phone, company, and support messages"],
+const definitions = [
+  ["Eligibility", "Refunds must be requested within 14 days of purchase."],
   [
-    "Transaction data",
-    "Order records, invoices, payment status, and plan details",
+    "Digital Goods",
+    "Generally non-refundable once downloaded, unless defective.",
   ],
   [
-    "Usage data",
-    "Pages viewed, feature usage, timestamps, and referral source",
+    "Processing Time",
+    "Refunds are typically processed within 5-7 business days.",
   ],
-  ["Device data", "IP address, browser, operating system, and device type"],
+  ["Method", "Refunds will be issued to the original payment method."],
 ]
 
 const onThisPageItems = policySections.map((section) => ({
@@ -150,30 +101,25 @@ const suggestedPages = [
   {
     href: "/terms-of-service",
     title: "Terms of Service",
-    description: "Review the rules for using our products and services.",
+    description: "Review the rules for purchases, accounts, and service use.",
   },
   {
-    href: "/cookie-policy",
-    title: "Cookie Policy",
-    description: "See how cookies and similar technologies are used.",
-  },
-  {
-    href: "/refund-policy",
-    title: "Refund Policy",
-    description: "Check refund eligibility, timing, and support steps.",
+    href: "/privacy-policy",
+    title: "Privacy Policy",
+    description: "Learn how order and support data is handled.",
   },
   {
     href: "/contact-us",
     title: "Contact Us",
-    description: "Send privacy questions or support requests to our team.",
+    description: "Send refund questions or support requests to our team.",
   },
 ]
 
-export default function PrivacyPolicyPage() {
+export default function RefundPolicyPage() {
   return (
     <div className="scroll-mt-24 bg-background">
       {/* ─── Hero ────────────────────────────────────────────────────────── */}
-      <PageHeader label="Legal document" title="Privacy Policy" />
+      <PageHeader label="Legal document" title="Refund Policy" />
 
       {/* ─── Meta bar ────────────────────────────────────────────────────── */}
       <div className="border-b border-border/60 bg-muted/40">
@@ -198,7 +144,7 @@ export default function PrivacyPolicyPage() {
                 href={"/contact-us"}
                 className="inline-flex h-7 items-center gap-1.5 border-b border-primary/50 pb-0.5 text-xs font-medium text-primary transition-colors hover:border-primary hover:text-primary/90 focus-visible:outline-none"
               >
-                Contact Us
+                Contact support
                 <ArrowUpRightIcon className="size-3" />
               </TransitionLink>
               <span className="text-border">·</span>
@@ -235,7 +181,7 @@ export default function PrivacyPolicyPage() {
                     <p className="mt-1 text-sm font-semibold text-foreground">
                       {item.title}
                     </p>
-                    <p className="mt-1 text-sm leading-[1.6] text-muted-foreground">
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">
                       {item.value}
                     </p>
                   </div>
@@ -255,11 +201,10 @@ export default function PrivacyPolicyPage() {
               <ShieldCheckIcon className="size-5 shrink-0 text-primary/60" />
               <span className="mt-2 block w-px flex-1 bg-border/60" />
             </div>
-            <p className="pb-10 text-[1rem] leading-[1.85] text-muted-foreground">
-              This policy explains what personal information we collect, how we
-              use it, who we share it with, and the choices available to people
-              who use our website, templates, dashboard layouts, and support
-              services.
+            <p className="pb-10 text-base leading-8 text-muted-foreground">
+              We are committed to providing the best products and support to our
+              customers. Please read our refund policy below to understand how
+              we handle refunds for digital products and subscriptions.
             </p>
           </div>
 
@@ -272,7 +217,7 @@ export default function PrivacyPolicyPage() {
             >
               <div className="flex gap-5">
                 <div className="flex w-7 shrink-0 flex-col items-center">
-                  <span className="font-mono text-[11px] font-semibold text-muted-foreground/35 tabular-nums">
+                  <span className="font-mono text-xs font-semibold text-muted-foreground/35 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="mt-3 block w-px flex-1 bg-border/40" />
@@ -280,12 +225,12 @@ export default function PrivacyPolicyPage() {
 
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <span className="block h-5 w-[2px] shrink-0 bg-primary/50" />
-                    <h2 className="text-[1.0625rem] font-semibold tracking-tight text-foreground sm:text-[1.125rem]">
+                    <span className="block h-5 w-0.5 shrink-0 bg-primary/50" />
+                    <h2 className="text-base font-semibold tracking-tight text-foreground sm:text-lg">
                       {section.title.replace(/^\d+\.\s/, "")}
                     </h2>
                   </div>
-                  <div className="mt-4 space-y-3.5 text-[0.9375rem] leading-[1.85] text-muted-foreground">
+                  <div className="mt-4 flex flex-col gap-3.5 text-sm leading-7 text-muted-foreground">
                     {section.body.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
@@ -302,8 +247,8 @@ export default function PrivacyPolicyPage() {
               <div className="flex-1">
                 <div className="flex items-center gap-3">
                   <CookieIcon className="size-4 shrink-0 text-muted-foreground/60" />
-                  <h2 className="text-[1.0625rem] font-semibold tracking-tight sm:text-[1.125rem]">
-                    Data Categories We Handle
+                  <h2 className="text-base font-semibold tracking-tight sm:text-lg">
+                    Refund Terms Summary
                   </h2>
                 </div>
 
@@ -315,24 +260,24 @@ export default function PrivacyPolicyPage() {
                           Category
                         </th>
                         <th className="py-2.5 font-semibold text-foreground">
-                          Examples
+                          Details
                         </th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border/40">
-                      {dataCategories.map(([category, examples]) => (
+                      {definitions.map(([term, definition]) => (
                         <tr
-                          key={category}
+                          key={term}
                           className="group/row transition-colors hover:bg-muted/30"
                         >
                           <td className="py-3.5 pr-8 font-medium text-foreground">
                             <span className="inline-flex items-center gap-2">
                               <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40 transition-colors group-hover/row:bg-primary/70" />
-                              {category}
+                              {term}
                             </span>
                           </td>
                           <td className="py-3.5 text-muted-foreground">
-                            {examples}
+                            {definition}
                           </td>
                         </tr>
                       ))}
@@ -347,15 +292,14 @@ export default function PrivacyPolicyPage() {
           <div className="flex gap-5 border-t border-border/60 pt-8">
             <div className="w-7 shrink-0" />
             <p className="text-xs leading-6 text-muted-foreground/50">
-              For privacy questions or requests, contact us at{" "}
+              For refund requests or questions, contact us at{" "}
               <TransitionLink
                 href={"/contact-us"}
                 className="underline underline-offset-2 transition-colors hover:text-muted-foreground"
               >
                 {siteConfig.emails[0]}
               </TransitionLink>
-              . This policy does not apply to third-party websites, services, or
-              applications linked from our site. Last reviewed {lastUpdated}.
+              . Last reviewed {lastUpdated}.
             </p>
           </div>
         </article>

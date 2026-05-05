@@ -178,7 +178,7 @@ export default function CookiePolicyPage() {
                     <p className="mt-1 text-sm font-semibold text-foreground">
                       {item.title}
                     </p>
-                    <p className="mt-1 text-sm leading-[1.6] text-muted-foreground">
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">
                       {item.value}
                     </p>
                   </div>
@@ -228,7 +228,7 @@ export default function CookiePolicyPage() {
                       {section.title.replace(/^\d+\.\s/, "")}
                     </h2>
                   </div>
-                  <div className="mt-4 space-y-3.5 text-sm leading-[1.85] text-muted-foreground">
+                  <div className="mt-4 flex flex-col gap-3.5 text-sm leading-7 text-muted-foreground">
                     {section.body.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}

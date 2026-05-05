@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Verify your two-factor authentication code",
 }
 
-export default async function page(props: PageProps<"/auth/two-factor/otp">) {
+export default async function page(props: PageProps<"/auth/two-factor">) {
   const { callback } = await props.searchParams
 
   return (

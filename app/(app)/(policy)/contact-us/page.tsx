@@ -178,7 +178,7 @@ export default function ContactUsPage() {
                     <p className="mt-1 text-sm font-semibold text-foreground">
                       {item.title}
                     </p>
-                    <p className="mt-1 text-sm leading-[1.6] text-muted-foreground">
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">
                       {item.value}
                     </p>
                   </div>
