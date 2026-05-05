@@ -2,7 +2,7 @@
 
 A stable, ready-to-use Next.js layout template built with the App Router, Tailwind CSS, shadcn/ui, and theme support.
 
-Current stable version: `1.0.0`
+Current stable version: `2.0.0`
 
 ## Stack
 
