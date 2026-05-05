@@ -1,14 +1,14 @@
-import { Metadata } from "next"
 import Link from "next/link"
 
 import LinkLoadingIndicator from "@/components/loader/link-loading-indicator"
 import { FieldDescription } from "@/components/ui/field"
 import { LoginForm } from "@/feature/auth/components/login-form"
+import { createOgMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "Login",
-  description: "Login to your account",
-}
+const title = "Login"
+const description = "Login to your account"
+
+export const metadata = createOgMetadata({ title, description })
 
 export default async function page(props: PageProps<"/auth/login">) {
   const { callback } = await props.searchParams

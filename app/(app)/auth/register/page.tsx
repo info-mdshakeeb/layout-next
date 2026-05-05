@@ -1,14 +1,14 @@
-import { Metadata } from "next"
 import Link from "next/link"
 
 import LinkLoadingIndicator from "@/components/loader/link-loading-indicator"
 import { FieldDescription } from "@/components/ui/field"
 import { RegisterForm } from "@/feature/auth/components/register-form"
+import { createOgMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "Register",
-  description: "Create a new account",
-}
+const title = "Register"
+const description = "Create a new account"
+
+export const metadata = createOgMetadata({ title, description })
 
 export default async function page() {
   return (

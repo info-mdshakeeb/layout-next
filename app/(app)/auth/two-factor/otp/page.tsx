@@ -1,4 +1,3 @@
-import { Metadata } from "next"
 import Link from "next/link"
 
 import LinkLoadingIndicator from "@/components/loader/link-loading-indicator"
@@ -8,11 +7,12 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { TwoFactorOtpForm } from "@/feature/auth/components/two-factor-otp-form"
+import { createOgMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "Email OTP verification",
-  description: "Verify the code sent to your email",
-}
+const title = "Email OTP verification"
+const description = "Verify the code sent to your email"
+
+export const metadata = createOgMetadata({ title, description })
 
 export default async function page(props: PageProps<"/auth/two-factor/otp">) {
   const { callback } = await props.searchParams

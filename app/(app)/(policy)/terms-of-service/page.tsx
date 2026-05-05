@@ -1,133 +1,32 @@
+import {
+  ArrowUpRightIcon,
+  CalendarDaysIcon,
+  CookieIcon,
+  Globe2Icon,
+  MapPinIcon,
+  ShieldCheckIcon,
+} from "lucide-react"
+import Link from "next/link"
+
 import { OnThisPage } from "@/components/elements/on-this-page"
 import { SuggestedPages } from "@/components/elements/suggested-pages"
 import { PageHeader } from "@/components/layout/page-header"
 import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
-import {
-  ArrowUpRightIcon,
-  CalendarDaysIcon,
-  CookieIcon,
-  DatabaseIcon,
-  Globe2Icon,
-  MapPinIcon,
-  ShieldCheckIcon,
-  UserCheckIcon,
-} from "lucide-react"
-import type { Metadata } from "next"
-import Link from "next/link"
+import { createOgMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: `Terms of Service | ${siteConfig.name}`,
-  description: `Read our Terms of Service to understand the rules and guidelines for using ${siteConfig.name} products.`,
-}
+import { termsOfServiceContent } from "./content"
 
-const lastUpdated = "April 29, 2026"
+export const metadata = createOgMetadata({
+  title: termsOfServiceContent.title,
+  description: termsOfServiceContent.description,
+})
 
-const summaryItems = [
-  {
-    title: "Account Rules",
-    value: "You must be 18+ and provide accurate information.",
-    icon: UserCheckIcon,
-  },
-  {
-    title: "Payments & Subscriptions",
-    value: "All payments are processed securely. Subscriptions auto-renew.",
-    icon: DatabaseIcon,
-  },
-  {
-    title: "Termination",
-    value: "We may suspend accounts that violate our usage policies.",
-    icon: ShieldCheckIcon,
-  },
-]
-
-const policySections = [
-  {
-    id: "acceptance",
-    title: "1. Acceptance of Terms",
-    body: [
-      "By accessing or using our services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.",
-      "These terms apply to all visitors, users, and others who access or use the Service.",
-    ],
-  },
-  {
-    id: "user-accounts",
-    title: "2. User Accounts",
-    body: [
-      "When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms.",
-      "You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password.",
-    ],
-  },
-  {
-    id: "intellectual-property",
-    title: "3. Intellectual Property",
-    body: [
-      `The Service and its original content, features, and functionality are and will remain the exclusive property of ${siteConfig.name} and its licensors.`,
-      `Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of ${siteConfig.name}.`,
-    ],
-  },
-  {
-    id: "termination",
-    title: "4. Termination",
-    body: [
-      "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.",
-      "Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service.",
-    ],
-  },
-  {
-    id: "limitation-of-liability",
-    title: "5. Limitation of Liability",
-    body: [
-      `In no event shall ${siteConfig.name}, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages.`,
-      'Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis.',
-    ],
-  },
-]
-
-const definitions = [
-  [
-    "Service",
-    `The website, applications, and any other offerings by ${siteConfig.name}`,
-  ],
-  ["User", "Any individual or entity who accesses or uses the Service"],
-  [
-    "Content",
-    "Text, images, or other information that can be posted, uploaded, linked to, or otherwise made available by you",
-  ],
-  [
-    "Account",
-    "A unique account created for you to access our Service or parts of our Service",
-  ],
-]
-
-const onThisPageItems = policySections.map((section) => ({
+const onThisPageItems = termsOfServiceContent.policySections.map((section) => ({
   id: section.id,
   text: section.title.replace(/^\d+\.\s/, ""),
   level: 2 as const,
 }))
-
-const suggestedPages = [
-  {
-    href: "/privacy-policy",
-    title: "Privacy Policy",
-    description: "Learn how personal information is collected and protected.",
-  },
-  {
-    href: "/refund-policy",
-    title: "Refund Policy",
-    description: "Check refund eligibility, timing, and support steps.",
-  },
-  {
-    href: "/cookie-policy",
-    title: "Cookie Policy",
-    description: "See how cookies and similar technologies are used.",
-  },
-  {
-    href: "/contact-us",
-    title: "Contact Us",
-    description: "Reach support for legal or account questions.",
-  },
-]
 
 export default function TermsOfServicePage() {
   return (
@@ -142,7 +41,7 @@ export default function TermsOfServicePage() {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
                 <CalendarDaysIcon className="size-3.5 text-primary/70" />
-                Updated {lastUpdated}
+                Updated {termsOfServiceContent.lastUpdated}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <MapPinIcon className="size-3.5 text-primary/70" />
@@ -177,7 +76,7 @@ export default function TermsOfServicePage() {
       <div className="border-b border-border/60">
         <div className="container">
           <div className="grid grid-cols-1 divide-y divide-border/60 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {summaryItems.map((item, i) => {
+            {termsOfServiceContent.summaryItems.map((item, i) => {
               const Icon = item.icon
               return (
                 <div
@@ -216,15 +115,12 @@ export default function TermsOfServicePage() {
               <span className="mt-2 block w-px flex-1 bg-border/60" />
             </div>
             <p className="pb-10 text-base leading-8 text-muted-foreground">
-              These Terms of Service govern your use of {siteConfig.name}{" "}
-              website and products. By accessing or using our services, you
-              agree to comply with and be bound by these terms. Please read them
-              carefully.
+              {termsOfServiceContent.intro}
             </p>
           </div>
 
           {/* Policy sections */}
-          {policySections.map((section, i) => (
+          {termsOfServiceContent.policySections.map((section, i) => (
             <section
               key={section.id}
               id={section.id}
@@ -280,22 +176,24 @@ export default function TermsOfServicePage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border/40">
-                      {definitions.map(([term, definition]) => (
-                        <tr
-                          key={term}
-                          className="group/row transition-colors hover:bg-muted/30"
-                        >
-                          <td className="py-3.5 pr-8 font-medium text-foreground">
-                            <span className="inline-flex items-center gap-2">
-                              <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40 transition-colors group-hover/row:bg-primary/70" />
-                              {term}
-                            </span>
-                          </td>
-                          <td className="py-3.5 text-muted-foreground">
-                            {definition}
-                          </td>
-                        </tr>
-                      ))}
+                      {termsOfServiceContent.definitions.map(
+                        ([term, definition]) => (
+                          <tr
+                            key={term}
+                            className="group/row transition-colors hover:bg-muted/30"
+                          >
+                            <td className="py-3.5 pr-8 font-medium text-foreground">
+                              <span className="inline-flex items-center gap-2">
+                                <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40 transition-colors group-hover/row:bg-primary/70" />
+                                {term}
+                              </span>
+                            </td>
+                            <td className="py-3.5 text-muted-foreground">
+                              {definition}
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -315,7 +213,7 @@ export default function TermsOfServicePage() {
                 {siteConfig.emails[0]}
               </TransitionLink>
               . These terms are governed by applicable laws. Last reviewed{" "}
-              {lastUpdated}.
+              {termsOfServiceContent.lastUpdated}.
             </p>
           </div>
         </article>
@@ -324,7 +222,7 @@ export default function TermsOfServicePage() {
         <aside className={"hidden lg:block"}>
           <div className="sticky top-[calc(var(--header-height)+1.5rem)] self-start">
             <OnThisPage items={onThisPageItems} />
-            <SuggestedPages pages={suggestedPages} />
+            <SuggestedPages pages={termsOfServiceContent.suggestedPages} />
           </div>
         </aside>
       </div>

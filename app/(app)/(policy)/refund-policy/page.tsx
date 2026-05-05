@@ -1,119 +1,32 @@
+import {
+  ArrowUpRightIcon,
+  CalendarDaysIcon,
+  CookieIcon,
+  Globe2Icon,
+  MapPinIcon,
+  ShieldCheckIcon,
+} from "lucide-react"
+import Link from "next/link"
+
 import { OnThisPage } from "@/components/elements/on-this-page"
 import { SuggestedPages } from "@/components/elements/suggested-pages"
 import { PageHeader } from "@/components/layout/page-header"
 import { TransitionLink } from "@/components/transition-link"
 import { siteConfig } from "@/lib/config"
-import {
-  ArrowUpRightIcon,
-  CalendarDaysIcon,
-  CheckCircle2Icon,
-  CookieIcon,
-  DatabaseIcon,
-  Globe2Icon,
-  MapPinIcon,
-  ShieldCheckIcon,
-  UserCheckIcon,
-} from "lucide-react"
-import type { Metadata } from "next"
-import Link from "next/link"
+import { createOgMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: `Refund Policy | ${siteConfig.name}`,
-  description:
-    "Learn about our refund policy and how we handle refunds for digital products and subscriptions.",
-}
+import { refundPolicyContent } from "./content"
 
-const lastUpdated = "April 29, 2026"
+export const metadata = createOgMetadata({
+  title: refundPolicyContent.title,
+  description: refundPolicyContent.description,
+})
 
-const summaryItems = [
-  {
-    title: "Money-Back Guarantee",
-    value: "We offer a 14-day money-back guarantee on all our products.",
-    icon: CheckCircle2Icon,
-  },
-  {
-    title: "Digital Products",
-    value: "Refunds for digital products are assessed on a case-by-case basis.",
-    icon: DatabaseIcon,
-  },
-  {
-    title: "Support",
-    value: "Please contact our support team before requesting a refund.",
-    icon: UserCheckIcon,
-  },
-]
-
-const policySections = [
-  {
-    id: "general-refund-terms",
-    title: "1. General Refund Terms",
-    body: [
-      "We want you to be completely satisfied with your purchase. If you are not satisfied with your purchase, you may be eligible for a refund.",
-      "All refund requests must be made within 14 days of the original purchase date.",
-    ],
-  },
-  {
-    id: "digital-downloads",
-    title: "2. Digital Downloads",
-    body: [
-      "Due to the nature of digital products, refunds are generally not provided once a product has been downloaded.",
-      "However, if you experience technical issues that prevent you from using the product, we will work with you to resolve the issue. If the issue cannot be resolved, a refund may be issued at our discretion.",
-    ],
-  },
-  {
-    id: "subscriptions",
-    title: "3. Subscriptions",
-    body: [
-      "Subscription fees are non-refundable. You may cancel your subscription at any time, and you will continue to have access to the service through the end of your billing period.",
-      "We do not provide refunds or credits for any partial subscription periods.",
-    ],
-  },
-  {
-    id: "how-to-request",
-    title: "4. How to Request a Refund",
-    body: [
-      "To request a refund, please contact our support team with your order number and a detailed explanation of why you are requesting a refund.",
-      "We aim to process all refund requests within 5-7 business days.",
-    ],
-  },
-]
-
-const definitions = [
-  ["Eligibility", "Refunds must be requested within 14 days of purchase."],
-  [
-    "Digital Goods",
-    "Generally non-refundable once downloaded, unless defective.",
-  ],
-  [
-    "Processing Time",
-    "Refunds are typically processed within 5-7 business days.",
-  ],
-  ["Method", "Refunds will be issued to the original payment method."],
-]
-
-const onThisPageItems = policySections.map((section) => ({
+const onThisPageItems = refundPolicyContent.policySections.map((section) => ({
   id: section.id,
   text: section.title.replace(/^\d+\.\s/, ""),
   level: 2 as const,
 }))
-
-const suggestedPages = [
-  {
-    href: "/terms-of-service",
-    title: "Terms of Service",
-    description: "Review the rules for purchases, accounts, and service use.",
-  },
-  {
-    href: "/privacy-policy",
-    title: "Privacy Policy",
-    description: "Learn how order and support data is handled.",
-  },
-  {
-    href: "/contact-us",
-    title: "Contact Us",
-    description: "Send refund questions or support requests to our team.",
-  },
-]
 
 export default function RefundPolicyPage() {
   return (
@@ -128,7 +41,7 @@ export default function RefundPolicyPage() {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
                 <CalendarDaysIcon className="size-3.5 text-primary/70" />
-                Updated {lastUpdated}
+                Updated {refundPolicyContent.lastUpdated}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <MapPinIcon className="size-3.5 text-primary/70" />
@@ -163,7 +76,7 @@ export default function RefundPolicyPage() {
       <div className="border-b border-border/60">
         <div className="container">
           <div className="grid grid-cols-1 divide-y divide-border/60 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {summaryItems.map((item, i) => {
+            {refundPolicyContent.summaryItems.map((item, i) => {
               const Icon = item.icon
               return (
                 <div
@@ -202,14 +115,12 @@ export default function RefundPolicyPage() {
               <span className="mt-2 block w-px flex-1 bg-border/60" />
             </div>
             <p className="pb-10 text-base leading-8 text-muted-foreground">
-              We are committed to providing the best products and support to our
-              customers. Please read our refund policy below to understand how
-              we handle refunds for digital products and subscriptions.
+              {refundPolicyContent.intro}
             </p>
           </div>
 
           {/* Policy sections */}
-          {policySections.map((section, i) => (
+          {refundPolicyContent.policySections.map((section, i) => (
             <section
               key={section.id}
               id={section.id}
@@ -265,22 +176,24 @@ export default function RefundPolicyPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border/40">
-                      {definitions.map(([term, definition]) => (
-                        <tr
-                          key={term}
-                          className="group/row transition-colors hover:bg-muted/30"
-                        >
-                          <td className="py-3.5 pr-8 font-medium text-foreground">
-                            <span className="inline-flex items-center gap-2">
-                              <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40 transition-colors group-hover/row:bg-primary/70" />
-                              {term}
-                            </span>
-                          </td>
-                          <td className="py-3.5 text-muted-foreground">
-                            {definition}
-                          </td>
-                        </tr>
-                      ))}
+                      {refundPolicyContent.definitions.map(
+                        ([term, definition]) => (
+                          <tr
+                            key={term}
+                            className="group/row transition-colors hover:bg-muted/30"
+                          >
+                            <td className="py-3.5 pr-8 font-medium text-foreground">
+                              <span className="inline-flex items-center gap-2">
+                                <span className="block h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40 transition-colors group-hover/row:bg-primary/70" />
+                                {term}
+                              </span>
+                            </td>
+                            <td className="py-3.5 text-muted-foreground">
+                              {definition}
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -299,7 +212,7 @@ export default function RefundPolicyPage() {
               >
                 {siteConfig.emails[0]}
               </TransitionLink>
-              . Last reviewed {lastUpdated}.
+              . Last reviewed {refundPolicyContent.lastUpdated}.
             </p>
           </div>
         </article>
@@ -308,7 +221,7 @@ export default function RefundPolicyPage() {
         <aside className={"hidden lg:block"}>
           <div className="sticky top-[calc(var(--header-height)+1.5rem)] self-start">
             <OnThisPage items={onThisPageItems} />
-            <SuggestedPages pages={suggestedPages} />
+            <SuggestedPages pages={refundPolicyContent.suggestedPages} />
           </div>
         </aside>
       </div>

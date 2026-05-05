@@ -4,7 +4,13 @@ import LinkLoadingIndicator from "@/components/loader/link-loading-indicator"
 import { FieldDescription } from "@/components/ui/field"
 
 import { ResetPasswordForm } from "@/feature/auth/components/reset-password-form"
+import { createOgMetadata } from "@/lib/metadata"
 import { redirect } from "next/navigation"
+
+const title = "Reset password"
+const description = "Enter a new password and confirm it to reset your password"
+
+export const metadata = createOgMetadata({ title, description })
 
 export default async function Page(props: PageProps<"/auth/reset-password">) {
   const { token } = await props.searchParams

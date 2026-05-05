@@ -1,14 +1,14 @@
-import { Metadata } from "next"
 import Link from "next/link"
 
 import LinkLoadingIndicator from "@/components/loader/link-loading-indicator"
 import { FieldDescription } from "@/components/ui/field"
 import { TwoFactorForm } from "@/feature/auth/components/two-factor-form"
+import { createOgMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "Two-factor verification",
-  description: "Verify your two-factor authentication code",
-}
+const title = "Two-factor verification"
+const description = "Verify your two-factor authentication code"
+
+export const metadata = createOgMetadata({ title, description })
 
 export default async function page(props: PageProps<"/auth/two-factor">) {
   const { callback } = await props.searchParams

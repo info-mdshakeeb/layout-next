@@ -1,118 +1,29 @@
+import {
+  ArrowUpRightIcon,
+  CalendarDaysIcon,
+  Clock3Icon,
+  Globe2Icon,
+  MapPinIcon,
+  MessageSquareTextIcon,
+  SendIcon,
+  ShieldCheckIcon,
+} from "lucide-react"
+
 import { OnThisPage } from "@/components/elements/on-this-page"
 import { SuggestedPages } from "@/components/elements/suggested-pages"
 import { PageHeader } from "@/components/layout/page-header"
 import { TransitionLink } from "@/components/transition-link"
 import { Badge } from "@/components/ui/badge"
 import { siteConfig } from "@/lib/config"
-import {
-  ArrowUpRightIcon,
-  CalendarDaysIcon,
-  CheckCircle2Icon,
-  Clock3Icon,
-  Globe2Icon,
-  HeadphonesIcon,
-  MailIcon,
-  MapPinIcon,
-  MessageSquareTextIcon,
-  PhoneIcon,
-  RouteIcon,
-  SendIcon,
-  ShieldCheckIcon,
-} from "lucide-react"
-import type { Metadata } from "next"
+import { createOgMetadata } from "@/lib/metadata"
+
 import { ContactForm } from "./contact-form"
+import { contactUsContent } from "./content"
 
-export const metadata: Metadata = {
-  title: `Contact Us | ${siteConfig.name}`,
-  description: `Contact ${siteConfig.name} for booking support, tour planning, corporate travel, and general assistance.`,
-}
-
-const lastUpdated = "April 30, 2026"
-
-const summaryItems = [
-  {
-    title: "Fast response",
-    value: "Send your trip details and our team will help with the next step.",
-    icon: HeadphonesIcon,
-  },
-  {
-    title: "Travel support",
-    value: "Bookings, tour plans, visa guidance, and corporate requests.",
-    icon: RouteIcon,
-  },
-  {
-    title: "Direct channels",
-    value: "Reach us by email, phone, or through the contact form below.",
-    icon: CheckCircle2Icon,
-  },
-]
-
-const contactMethods = [
-  {
-    id: "email",
-    label: "Email",
-    value: siteConfig.emails[0],
-    href: `mailto:${siteConfig.emails[0]}`,
-    icon: MailIcon,
-  },
-  {
-    id: "phone",
-    label: "Hotline",
-    value: siteConfig.phones[0],
-    href: `tel:${siteConfig.phones[0]}`,
-    icon: PhoneIcon,
-  },
-  {
-    id: "address",
-    label: "Office",
-    value: siteConfig.address,
-    href: "https://maps.google.com/?q=House%2024%2C%20Road%208%2C%20Dhaka%2C%20Bangladesh",
-    icon: MapPinIcon,
-  },
-]
-
-const supportSteps = [
-  [
-    "01",
-    "Share your request",
-    "Tell us the destination, travel dates, passenger count, and support you need.",
-  ],
-  [
-    "02",
-    "We review details",
-    "Our team checks availability, route options, and the most relevant next action.",
-  ],
-  [
-    "03",
-    "Confirm the plan",
-    "You receive clear follow-up details before booking, payment, or documentation.",
-  ],
-]
-
-const onThisPageItems = [
-  { id: "contact-form", text: "Contact Form", level: 2 as const },
-  { id: "direct-contact", text: "Direct Contact", level: 2 as const },
-  { id: "support-process", text: "Support Process", level: 2 as const },
-  { id: "office-hours", text: "Office Hours", level: 2 as const },
-]
-
-const suggestedPages = [
-  {
-    href: "/privacy-policy",
-    title: "Privacy Policy",
-    description: "Learn how contact and support data is handled.",
-  },
-  {
-    href: "/refund-policy",
-    title: "Refund Policy",
-    description: "Check refund eligibility before sending a request.",
-  },
-  {
-    href: "/terms-of-service",
-    title: "Terms of Service",
-    description: "Review service terms for bookings and support.",
-  },
-]
+export const metadata = createOgMetadata({
+  title: contactUsContent.title,
+  description: contactUsContent.description,
+})
 
 export default function ContactUsPage() {
   return (
@@ -125,7 +36,7 @@ export default function ContactUsPage() {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
                 <CalendarDaysIcon className="size-3.5 text-primary/70" />
-                Updated {lastUpdated}
+                Updated {contactUsContent.lastUpdated}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <MapPinIcon className="size-3.5 text-primary/70" />
@@ -159,7 +70,7 @@ export default function ContactUsPage() {
       <div className="border-b border-border/60">
         <div className="container">
           <div className="grid grid-cols-1 divide-y divide-border/60 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {summaryItems.map((item, i) => {
+            {contactUsContent.summaryItems.map((item, i) => {
               const Icon = item.icon
 
               return (
@@ -197,10 +108,7 @@ export default function ContactUsPage() {
               <span className="mt-2 block w-px flex-1 bg-border/60" />
             </div>
             <p className="pb-10 text-sm leading-7 text-muted-foreground">
-              Use this page to reach our team for travel bookings, itinerary
-              planning, visa-related guidance, corporate travel support, or
-              general questions. Include the important trip details so we can
-              respond with the right context.
+              {contactUsContent.intro}
             </p>
           </div>
 
@@ -249,7 +157,7 @@ export default function ContactUsPage() {
                 </div>
 
                 <div className="mt-5 grid gap-3 md:grid-cols-3">
-                  {contactMethods.map((method) => {
+                  {contactUsContent.contactMethods.map((method) => {
                     const Icon = method.icon
 
                     return (
@@ -311,24 +219,26 @@ export default function ContactUsPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border/40">
-                      {supportSteps.map(([step, title, details]) => (
-                        <tr
-                          key={step}
-                          className="group/row transition-colors hover:bg-muted/30"
-                        >
-                          <td className="py-3.5 pr-8 font-medium text-foreground">
-                            <span className="inline-flex items-center gap-2">
-                              <span className="font-mono text-xs text-primary/70">
-                                {step}
+                      {contactUsContent.supportSteps.map(
+                        ([step, title, details]) => (
+                          <tr
+                            key={step}
+                            className="group/row transition-colors hover:bg-muted/30"
+                          >
+                            <td className="py-3.5 pr-8 font-medium text-foreground">
+                              <span className="inline-flex items-center gap-2">
+                                <span className="font-mono text-xs text-primary/70">
+                                  {step}
+                                </span>
+                                {title}
                               </span>
-                              {title}
-                            </span>
-                          </td>
-                          <td className="py-3.5 text-muted-foreground">
-                            {details}
-                          </td>
-                        </tr>
-                      ))}
+                            </td>
+                            <td className="py-3.5 text-muted-foreground">
+                              {details}
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -353,16 +263,13 @@ export default function ContactUsPage() {
                   <h2 className="font-semibold tracking-tight">Office Hours</h2>
                 </div>
                 <div className="mt-5 flex flex-col gap-3 text-sm leading-7 text-muted-foreground">
-                  <p>
-                    Standard support is available Saturday to Thursday, 10:00 AM
-                    to 7:00 PM Bangladesh time. Emergency travel requests should
-                    include a phone number so the team can prioritize the
-                    response.
-                  </p>
+                  <p>{contactUsContent.officeHours}</p>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">Saturday-Thursday</Badge>
-                    <Badge variant="secondary">10:00 AM-7:00 PM</Badge>
-                    <Badge variant="secondary">Dhaka, Bangladesh</Badge>
+                    {contactUsContent.officeHourBadges.map((badge) => (
+                      <Badge key={badge} variant="secondary">
+                        {badge}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -379,15 +286,15 @@ export default function ContactUsPage() {
               >
                 {siteConfig.emails[0]}
               </a>
-              . Last reviewed {lastUpdated}.
+              . Last reviewed {contactUsContent.lastUpdated}.
             </p>
           </div>
         </article>
 
         <aside className={"hidden lg:block"}>
           <div className="sticky top-[calc(var(--header-height)+1.5rem)] self-start">
-            <OnThisPage items={onThisPageItems} />
-            <SuggestedPages pages={suggestedPages} />
+            <OnThisPage items={contactUsContent.onThisPageItems} />
+            <SuggestedPages pages={contactUsContent.suggestedPages} />
           </div>
         </aside>
       </div>

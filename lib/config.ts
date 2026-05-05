@@ -1,7 +1,8 @@
+
 export const siteConfig = {
   name: "Synth-Co",
-  url: "demo.com",
-  ogImage: "demo.com/og.jpg",
+  url: "https://synth-co.demo",
+  ogImage: `https://synth-co.demo/opengraph-image.png`,
   description:
     "This is a demo description for a Next.js project using the shadcn UI components.",
   address: "House 24, Road 8, Dhaka, Bangladesh",
@@ -20,8 +21,9 @@ export const siteConfig = {
     linkedin: "#linkedin",
   },
   author: {
-    name: "@info.mdshakeeb",
-    url: "",
+    name: "mdshakeeb",
+    username: "@info.mdshakeeb",
+    url: "https://mdshakeeb.dev",
   },
 }
 

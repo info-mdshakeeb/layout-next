@@ -1,4 +1,13 @@
 import AuroraGlyph from "@/components/elements/icons"
+import { createOgMetadata } from "@/lib/metadata"
+
+const title = "This is a demo"
+const description = "This is a demo of the open graph image generation."
+
+export const metadata = createOgMetadata({
+  title,
+  description,
+})
 
 export default function Page() {
   return (
