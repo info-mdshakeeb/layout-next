@@ -1,4 +1,4 @@
-# Layout Next
+# Template Next
 
 A stable, ready-to-use Next.js layout template built with the App Router, Tailwind CSS, shadcn/ui, and theme support.
 
@@ -80,5 +80,5 @@ That command consumes the files in `.changeset`, updates the package version, an
 Repository:
 
 ```bash
-https://github.com/info-mdshakeeb/layout-next.git
+https://github.com/info-mdshakeeb/template-next.git
 ```

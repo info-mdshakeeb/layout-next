@@ -1,8 +1,16 @@
 {
-  "name": "layout-next",
+  "name": "template-next",
   "version": "1.0.0",
   "type": "module",
-  "private": true,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "info.mdshakeeb",
+    "email": "info.mdshakeeb@gmail.com",
+    "url": "https://github.com/info-mdshakeeb"
+  },
   "scripts": {
     "dev": "next dev --turbopack -p 1234",
     "build": "next build",
@@ -12,6 +20,9 @@
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",
     "changeset:status": "changeset status",
+    "release": "changeset version",
+    "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
+    "pub:release": "pnpm build && pnpm publish --access public",
     "version-packages": "changeset version"
   },
   "dependencies": {

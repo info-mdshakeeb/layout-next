@@ -70,7 +70,7 @@ export default function AuthLayout({
 
       {/* ── Bottom copyright ── */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8">
-        <p className="text-[0.7rem] tracking-wide text-muted-foreground/40 uppercase">
+        <p className="text-xs tracking-wide text-muted-foreground/40 uppercase">
           © {new Date().getFullYear()} {siteConfig.name}
         </p>
       </div>
