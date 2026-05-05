@@ -280,9 +280,10 @@ export function SiteHeader() {
                         asChild
                         data-active={active ? "true" : undefined}
                         className={cn(
-                          "data-active:bg-transparent data-active:hover:bg-transparent data-active:focus:bg-transparent",
-                          "bg-transparent text-muted-foreground",
-                          "hover:bg-none! hover:text-accent-foreground"
+                          "focus:bg-transparent focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-md data-active:bg-transparent data-active:hover:bg-transparent data-active:focus:bg-transparent",
+                          "text-muted-foreground",
+                          "hover:bg-none! hover:text-accent-foreground",
+                          "data-active:text-primary"
                         )}
                       >
                         <TransitionLink

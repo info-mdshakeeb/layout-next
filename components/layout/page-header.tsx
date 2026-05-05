@@ -18,7 +18,7 @@ export function PageHeader({
 }: PageHeaderProps) {
   return (
     <div
-      className={cn("bg-cover bg-fixed bg-center bg-no-repeat", className)}
+      className={cn("bg-cover bg-center bg-no-repeat", className)}
       style={{ backgroundImage: `url('${backgroundImage}')` }}
     >
       <div className="container flex h-30 items-end justify-start gap-4 pb-7 sm:h-48 lg:h-48 lg:pb-8">
