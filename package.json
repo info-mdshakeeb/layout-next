@@ -1,6 +1,6 @@
 {
   "name": "template-next",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "private": false,
   "publishConfig": {
@@ -21,6 +21,7 @@
     "changeset": "changeset",
     "changeset:status": "changeset status",
     "release": "changeset version",
+    "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "version-packages": "changeset version"

@@ -1,5 +1,15 @@
 # template-next
 
+## 2.0.0
+
+### Major Changes
+
+- Add the Open Graph image route and release the template as 2.0.0.
+
+### Patch Changes
+
+- 4be3ff4: Configure public package release scripts and publish metadata.
+
 ## 1.0.0
 
 ### Major Changes
