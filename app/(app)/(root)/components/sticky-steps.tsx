@@ -268,7 +268,7 @@ export function StickySteps() {
               className="pointer-events-none absolute top-[-20vh] z-0 h-dvh w-screen bg-contain bg-center bg-no-repeat opacity-80 dark:opacity-25"
               style={{
                 left: "calc((min(var(--container-max, calc(1200px + (24px * 2))), 100vw) - 100vw) / 2 - 1rem)",
-                backgroundImage: "url('assets/images/Index__hero.svg')",
+                backgroundImage: "url('/assets/images/Index__hero.svg')",
               }}
               aria-hidden="true"
             />
