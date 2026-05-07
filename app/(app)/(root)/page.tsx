@@ -1,5 +1,6 @@
 import AuroraGlyph from "@/components/elements/icons"
 import { createOgMetadata } from "@/lib/metadata"
+import { StickySteps } from "./components/sticky-steps"
 
 const title = "This is a demo"
 const description = "This is a demo of the open graph image generation."
@@ -20,6 +21,8 @@ export default function Page() {
           </h1>
         </div>
       </div>
+
+      <StickySteps />
     </div>
   )
 }
