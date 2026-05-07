@@ -13,7 +13,7 @@ import {
   useTransform,
 } from "motion/react"
 import Link from "next/link"
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useRef, useState } from "react"
 
 type FlightStep = {
   eyebrow: string
@@ -38,7 +38,7 @@ const STEPS: FlightStep[] = [
     eyebrow: "Step 2",
     title: "Compare fares with clear details.",
     description:
-      "Review each option with the details travelers usually need before booking: airline, departure time, transit duration, baggage allowance, refund rules, and total fare. The goal is to make price comparison clear without hiding important conditions.",
+      "Review each option with the details travelers usually need before booking: airline, departure time, transit duration, baggage allowance, refund rules, and total fare. The goal is to make price comparison clear without hiding important conditions.Add passenger information, save traveler profiles for future bookings, and check the itinerary before payment. The checkout flow keeps the important details visible so names, dates, routes, and fare rules can be reviewed before confirmation.Add passenger information, save traveler profiles for future bookings, and check the itinerary before payment. The checkout flow keeps the important details visible so names, dates, routes, and fare rules can be reviewed before confirmation.",
   },
   {
     eyebrow: "Step 3",
@@ -78,6 +78,13 @@ function StepPanel({
   setStepNode: (index: number, node: HTMLDivElement | null) => void
 }) {
   const ref = useRef<HTMLDivElement>(null)
+  const setPanelNode = useCallback(
+    (node: HTMLDivElement | null) => {
+      ref.current = node
+      setStepNode(index, node)
+    },
+    [index, setStepNode]
+  )
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 62%", "end 42%"],
@@ -86,15 +93,9 @@ function StepPanel({
   const isActive = activeIndex === index
   const stepNumber = `${index + 1}`.padStart(2, "0")
 
-  useEffect(() => {
-    setStepNode(index, ref.current)
-
-    return () => setStepNode(index, null)
-  }, [index, setStepNode])
-
   return (
     <div
-      ref={ref}
+      ref={setPanelNode}
       className="relative flex flex-col items-start justify-center py-10"
     >
       <div className="mb-5 flex text-7xl leading-none font-bold text-primary lg:hidden">
@@ -140,7 +141,6 @@ function StepPanel({
 }
 
 export function StickySteps() {
-  const ref = useRef<HTMLElement>(null)
   const numberSlotRef = useRef<HTMLDivElement>(null)
   const stepRefs = useRef<(HTMLDivElement | null)[]>([])
   const syncFrameRef = useRef<number | null>(null)
@@ -151,13 +151,6 @@ export function StickySteps() {
   const numberTrackY = useTransform(
     stepProgress,
     (latest) => `-${latest * (100 / STEPS.length)}%`
-  )
-
-  const setStepNode = useCallback(
-    (index: number, node: HTMLDivElement | null) => {
-      stepRefs.current[index] = node
-    },
-    []
   )
 
   const syncStepNumber = useCallback(() => {
@@ -230,75 +223,28 @@ export function StickySteps() {
     })
   }, [syncStepNumber])
 
-  // ---- original scroll & resize listeners ----
-  useEffect(() => {
-    scheduleStepNumberSync()
+  const setStepNode = useCallback(
+    (index: number, node: HTMLDivElement | null) => {
+      stepRefs.current[index] = node
+      scheduleStepNumberSync()
+    },
+    [scheduleStepNumberSync]
+  )
 
-    window.addEventListener("resize", scheduleStepNumberSync)
-
-    return () => {
-      if (syncFrameRef.current !== null) {
-        window.cancelAnimationFrame(syncFrameRef.current)
-      }
-
-      window.removeEventListener("resize", scheduleStepNumberSync)
-    }
-  }, [scheduleStepNumberSync])
+  const setNumberSlotNode = useCallback(
+    (node: HTMLDivElement | null) => {
+      numberSlotRef.current = node
+      scheduleStepNumberSync()
+    },
+    [scheduleStepNumberSync]
+  )
 
   useMotionValueEvent(scrollY, "change", () => {
     scheduleStepNumberSync()
   })
 
-  // =========================================================
-  // FIX: Re‑sync after mount, on pageshow, and on number‑slot resize
-  // =========================================================
-
-  // 1. Re‑run sync after a short delay (layout & fonts settle)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (syncFrameRef.current !== null) {
-        cancelAnimationFrame(syncFrameRef.current)
-        syncFrameRef.current = null
-      }
-      syncStepNumber()
-    }, 150)
-
-    // Also handle browser back/forward cache
-    const handlePageShow = () => {
-      if (syncFrameRef.current !== null) {
-        cancelAnimationFrame(syncFrameRef.current)
-        syncFrameRef.current = null
-      }
-      syncStepNumber()
-    }
-
-    window.addEventListener("pageshow", handlePageShow)
-
-    return () => {
-      clearTimeout(timer)
-      window.removeEventListener("pageshow", handlePageShow)
-    }
-  }, [syncStepNumber])
-
-  // 2. Re‑sync when the number slot’s size changes (font swap, responsive breakpoints)
-  useEffect(() => {
-    const slot = numberSlotRef.current
-    if (!slot) return
-
-    const observer = new ResizeObserver(() => {
-      scheduleStepNumberSync()
-    })
-
-    observer.observe(slot)
-
-    return () => observer.disconnect()
-  }, [scheduleStepNumberSync])
-
   return (
-    <section
-      ref={ref}
-      className="relative isolate overflow-clip bg-background py-16 md:py-24"
-    >
+    <section className="relative isolate overflow-clip bg-background py-16 md:py-24">
       <div className="z-10 container">
         <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
@@ -314,7 +260,7 @@ export function StickySteps() {
 
         <div className="grid items-start gap-12 lg:grid-cols-[max-content_minmax(0,1fr)] lg:gap-20">
           <div
-            ref={numberSlotRef}
+            ref={setNumberSlotNode}
             className="sticky top-[20vh] hidden h-56 items-start overflow-visible lg:flex"
             aria-hidden="true"
           >
